@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYS.LOGIN // A.SHARMA_AI</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Fira+Code:wght@400;500;600&family=Orbitron:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="loading-screen">
+        <div id="animated-command-container" class="crt-screen vhs-mode">
+            <div class="scanlines"></div>
+            <div class="vhs-scanlines"></div>
+            <div class="vhs-static"></div>
+            <div class="screen-flicker"></div>
+            <span id="animated-command-text"></span>
+        </div>
+        <canvas id="matrix-canvas"></canvas>
+        <div id="matrix-entry-text">INITIALIZING DATA CORES...</div>
+    </div>
+
+    <!-- 3D Background Container -->
+    <div id="three-container"></div>
+
+    <div class="content">
+        <header>
+            <div class="logo">
+                <span class="logo-icon"></span>
+                <span id="animated-logo-text">>./Abhigyan.Sharma</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#about">$ Profile</a></li>
+                    <li><a href="#projects">$ Databanks</a></li>
+                    <li><a href="#skills">$ Capabilities</a></li>
+                    <li><a href="#dots-boxes">$ Dots_&_Boxes</a></li>
+                    <li><a href="#contact">$ Comm_Link</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <h1 class="text-glitch" data-text=">./NEURAL_ARCHITECT: Engineering Intelligence">>./NEURAL_ARCHITECT:
+                Engineering Intelligence</h1>
+            <h2>B.Tech Data Science & AI @ IIT Bhilai | ML and Gen AI Enthusiast</h2>
+            <p>Welcome to the central nexus. I specialize in the synthesis of high-fidelity neural architectures,
+                RAG-driven LLM agents,
+                and resilient data engineering pipelines. From architecting CLIP-based forensic models to optimizing
+                disk-based
+                indexing engines in C++, I bridge the frontier of AI research with the rigor of production-ready
+                software development.</p>
+            <a href="#projects" class="btn btn-primary">Mount Databanks</a>
+            <a href="#dots-boxes" class="btn">Play AI</a>
+        </section>
+
+        <section id="about" class="fade-in-section"
+            style="padding-top: 6rem; padding-bottom: 6rem; position: relative; overflow: hidden;">
+            <canvas id="about-matrix-bg"
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.1;"></canvas>
+            <h2 class="section-title terminal-text-glow"
+                style="text-align: center; margin-bottom: 4rem; font-size: 3rem;"
+                data-text="> ./INITIATE: Profile_Abhigyan.exe">> ./INITIATE: Profile_Abhigyan.exe
+            </h2>
+
+            <div class="matrix-terminal-output">
+                <p class="matrix-prompt">[sys_admin@ml_core ~]$ ./load_profile --target=abhigyan</p>
+                <p class="matrix-response typing-effect" id="profile-line-1">Accessing IIT Bhilai mainframe...
+                    Connection established.</p>
+                <p class="matrix-response typing-effect" id="profile-line-2">Querying DS & AI Undergraduate Program...
+                    Subject: Abhigyan Sharma.</p>
+                <p class="matrix-response typing-effect" id="profile-line-3">Expected graduation: 2027. CGPA: 8.00/10.0.
+                </p>
+                <p class="matrix-response typing-effect" id="profile-line-4">Core directive: Innovate in Generative
+                    Models, Deep Learning, and System Architecture.</p>
+
+                <div class="matrix-tabs">
+                    <button class="matrix-tab-button active"
+                        onclick="showTab('education-tab', this)">Education_Logs.dat</button>
+                    <button class="matrix-tab-button"
+                        onclick="showTab('achievements-tab', this)">Achievements_Index.log</button>
+                    <button class="matrix-tab-button"
+                        onclick="showTab('leadership-tab', this)">Leadership_Protocols.ini</button>
+                </div>
+
+                <div id="education-tab" class="matrix-tab-content active-content">
+                    <p class="matrix-prompt">[sys_admin@ml_core ~]$ cat Education_Logs.dat</p>
+                    <ul class="matrix-list">
+                        <li><span class="matrix-highlight">[CURRENT_NODE]:</span> Indian Institute of Technology Bhilai
+                            (Expected: May 2027) | B.Tech DS & AI</li>
+                        <li><span class="matrix-highlight">[SECONDARY_NODE]:</span> Sai RNS Academy (Completed April
+                            2023) | AISSCE (Class XII) | 91.2%</li>
+                        <li><span class="matrix-highlight">[PRIMARY_NODE]:</span> Sainik School Goalpara (Completed
+                            April 2021) | AISSE (Class X) | 96.2%</li>
+                    </ul>
+                </div>
+
+                <div id="achievements-tab" class="matrix-tab-content">
+                    <p class="matrix-prompt">[sys_admin@ml_core ~]$ ls -l Achievements_Index.log</p>
+                    <ul class="matrix-list">
+                        <li><span class="matrix-highlight">[RANK]:</span> All India Rank 7445 in JEE Advanced (IIT
+                            Entrance Test) 2023</li>
+                        <li><span class="matrix-highlight">[RATING]:</span> Pupil on Codeforces (Max Rating: 1293)</li>
+                        <li><span class="matrix-highlight">[QUALIFIER]:</span> Qualified for the Meta HackerCup’25
+                            Round-2</li>
+                        <li><span class="matrix-highlight">[COMPETITION]:</span> Ranked 278th nationwide in Amazon ML
+                            Challenge 2025 (Score: 46.649)</li>
+                        <li><span class="matrix-highlight">[CERTIFICATION]:</span> NCC A Certificate holder (A grade)
+                            under 27 ASSAM Sainik School Goalpara</li>
+                    </ul>
+                </div>
+
+                <div id="leadership-tab" class="matrix-tab-content">
+                    <p class="matrix-prompt">[sys_admin@ml_core ~]$ run Leadership_Protocols.ini</p>
+                    <ul class="matrix-list">
+                        <li><span class="matrix-highlight">[FOUNDER]:</span> Core Member, Entrepreneurship Cell, IIT
+                            Bhilai – Organized Ted-style talks & pitching events.</li>
+                        <li><span class="matrix-highlight">[COMMITTEE]:</span> Meraz 6.0 Organizer – Logistics for 2000+
+                            attendees. Chaired IIT Bhilai MUN’24.</li>
+                        <li><span class="matrix-highlight">[ADMIN_LIAISON]:</span> Mess Coordinator, IIT Bhilai –
+                            Bridged communication between students & administration.</li>
+                        <li><span class="matrix-highlight">[PLACEMENT_VOL]:</span> Support Node for placement cell
+                            operations during recruitment drives.</li>
+                    </ul>
+                </div>
+                <p class="matrix-prompt" style="margin-top: 25px;">[sys_admin@ml_core ~]$ echo "Systems optimal.
+                    Awaiting instructions."</p>
+                <p class="matrix-response typing-effect" id="contact-prompt">Systems optimal. Awaiting instructions.</p>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2 class="section-title text-glitch" data-text="> ./Project Databanks">> ./Project Databanks</h2>
+            <div class="projects-grid">
+                <!-- Project 1: Pix2Pix -->
+                <div class="project-card">
+                    <div class="project-img"
+                        style="background: url('https://images.unsplash.com/photo-1542626991-cbc4e32524cc?q=80&w=600&auto=format&fit=crop') center/cover;">
+                        <div class="img-overlay">GAN_ARCHITECTURE</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Structure-Aware Multi-Scale Pix2Pix</h3>
+                        <p>Developed an image-to-image translation model using Pix2Pix GAN architectures (U-Net
+                            generators, PatchGAN discriminators) with multi-scale feature extraction. Trained on 12k
+                            image pairs via PyTorch, improving SSIM by 0.08.</p>
+                        <a href="https://github.com/Abhigyan6091/Structure-Aware-Multi-Scale-Pix2Pix" class="btn"
+                            target="_blank">Access Repository</a>
+                    </div>
+                </div>
+
+                <!-- Project 2: DB Indexing -->
+                <div class="project-card">
+                    <div class="project-img"
+                        style="background: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=600&auto=format&fit=crop') center/cover;">
+                        <div class="img-overlay">DB_INDEXING</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Disk-Based B+ Tree Index for DBMS</h3>
+                        <p>Implemented a disk-based B+ Tree system to simulate modern SQL indexing mechanics. Operates
+                            at O(log n) lookup speed with advanced node splitting, disk page management, and scalable
+                            storage optimization.</p>
+                        <a href="https://github.com/Abhigyan6091/B_plus-Tree-disk-based-index-for-DBMS" class="btn"
+                            target="_blank">Access Repository</a>
+                    </div>
+                </div>
+
+                <!-- Project 3: NLP Sequence -->
+                <div class="project-card">
+                    <div class="project-img"
+                        style="background: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=600&auto=format&fit=crop') center/cover;">
+                        <div class="img-overlay">NLP_SEQUENCE</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Reciprocal Poetry Generation</h3>
+                        <p>An advanced NLP model using contextual embeddings, sequence layers, and attention blocks.
+                            Engineered a reciprocal context-learning flow ensuring previous verse output directly
+                            influences semantic coherence. Trained on 5000+ texts.</p>
+                        <a href="https://github.com/Abhigyan6091/Reciprocal-Contextual-Poetry-Generation" class="btn"
+                            target="_blank">Access Repository</a>
+                    </div>
+                </div>
+
+                <!-- Project 4: Deepfake Detection -->
+                <div class="project-card">
+                    <div class="project-img"
+                        style="background: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=600&auto=format&fit=crop') center/cover;">
+                        <div class="img-overlay">DEEPFAKE_CLIP</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Multimodal Deepfake Detection</h3>
+                        <p>A novel side-network-based decoder extracting spatial and temporal cues using the CLIP image
+                            encoder for generalized video-based Deepfake detection. Enhances robustness across diverse
+                            forgery methods.</p>
+                        <a href="https://github.com/Abhigyan6091/Multimodal-Deepfake-Detection-" class="btn"
+                            target="_blank">Access Repository</a>
+                    </div>
+                </div>
+
+                <!-- Project 5: Intelligent SQL Agent -->
+                <div class="project-card">
+                    <div class="project-img"
+                        style="background: url('https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80&w=600&auto=format&fit=crop') center/cover;">
+                        <div class="img-overlay">SQL_LLM_AGENT</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Intelligent SQL Agent (OpenAI/Mistral)</h3>
+                        <p>A natural-language agent that converts plain English into safe SQL queries, automatically
+                            targets relevant schema tables, executes the generated SQL securely, and returns structured
+                            data results.</p>
+                        <a href="https://github.com/Abhigyan6091/Intelligent-SQL-Agent" class="btn"
+                            target="_blank">Access Repository</a>
+                    </div>
+                </div>
+
+                <!-- Project 6: HMM on FDR Data -->
+                <div class="project-card">
+                    <div class="project-img"
+                        style="background: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=600&auto=format&fit=crop') center/cover;">
+                        <div class="img-overlay">HMM_FLIGHT_DATA</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Hidden States in Flight Data via HMM</h3>
+                        <p>Applies Hidden Markov Models to analyze Flight Data Recorder (FDR) time series from 5,335
+                            flights. Computes the optimal number of hidden states describing flight dynamics using KL
+                            divergence as a model selection criterion.</p>
+                        <a href="https://github.com/Abhigyan6091/Finding-hidden-states-using-HMM-on-FDR-data"
+                            class="btn" target="_blank">Access Repository</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2 class="section-title text-glitch" data-text="> ./Technical Capabilities">> ./Technical Capabilities</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Data Science & AI</h3>
+                    <ul class="skill-list">
+                        <li>Machine & Deep Learning</li>
+                        <li>Generative AI & GANs</li>
+                        <li>NLP & RAG Pipelines</li>
+                        <li>Computer Vision Model Building</li>
+                        <li>Reinforcement Learning</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Libraries & Core Code</h3>
+                    <ul class="skill-list">
+                        <li>Python, C++, Java, C</li>
+                        <li>TensorFlow, PyTorch, Scikit-Learn</li>
+                        <li>NumPy, Pandas, Matplotlib, OpenCV</li>
+                        <li>LangGraph, Scrapy, NetworkX</li>
+                        <li>Data Structures & Algorithms</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Web, DBs & Development</h3>
+                    <ul class="skill-list">
+                        <li>FastAPI, Flask, HTML</li>
+                        <li>MySQL, PostgreSQL, MongoDB</li>
+                        <li>Apache Spark, Kafka, ETL</li>
+                        <li>Git, Docker, CI/CD, ROS</li>
+                        <li>OOPs, OS, Formal Verification</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="dots-boxes">
+            <h2 class="section-title text-glitch" data-text="> ./EXECUTE: Minimax_Agent.v2 (Alpha-Beta)">> ./EXECUTE:
+                Minimax_Agent.v2 (Alpha-Beta)</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem; max-width: 800px; color: #a0b3c6;">
+                Challenge my Minimax Algorithm with Alpha-Beta Pruning. I developed this AI to play the classic Dots &
+                Boxes game. Can you beat it?
+            </p>
+
+            <div class="control-group game-container">
+                <div class="game-header">
+                    <div class="score-board">
+                        <div class="score user-score">You: <span id="score-user">0</span></div>
+                        <div class="score ai-score">SYS.AI: <span id="score-ai">0</span></div>
+                    </div>
+                    <div class="game-status" id="game-status">Your Turn (Select a Line)</div>
+                </div>
+
+                <div class="canvas-wrapper">
+                    <canvas id="game-canvas" width="400" height="400"></canvas>
+                </div>
+
+                <div class="preset-buttons" style="justify-content: center; margin-top: 2rem;">
+                    <button class="preset-btn" id="btn-restart">Restart_Game()</button>
+                    <a href="https://github.com/Abhigyan6091/Dots-and-Boxes-" target="_blank" class="preset-btn"
+                        style="text-decoration: none;">View_Source_Code</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2 class="section-title text-glitch" data-text="> ./Establish Comm Link">> ./Establish Comm Link</h2>
+            <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto 3rem; text-align: center; line-height: 1.7;">
+                Scanning for potential collaborators, data science internships, and open-source contributions.
+                My inbox protocol is always open for robust system integrations and creative software deployments.
+            </p>
+
+            <div class="comm-grid">
+                <a href="https://www.linkedin.com/in/abhigyan-sharma-73b094304" target="_blank" class="comm-card">
+                    <span class="comm-icon">in</span>
+                    <span class="comm-text">LinkedIn_Profile</span>
+                </a>
+                <a href="https://github.com/Abhigyan6091" target="_blank" class="comm-card">
+                    <span class="comm-icon">gh</span>
+                    <span class="comm-text">GitHub_Access</span>
+                </a>
+                <a href="https://wa.me/916003063230" target="_blank" class="comm-card">
+                    <span class="comm-icon">wa</span>
+                    <span class="comm-text">WhatsApp_Signal</span>
+                </a>
+                <a href="https://www.instagram.com/abhigyan.01_?igsh=eHU3czZsbGhsaHR1" target="_blank"
+                    class="comm-card">
+                    <span class="comm-icon">ig</span>
+                    <span class="comm-text">Insta_Relay</span>
+                </a>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem; margin-bottom: 6rem;">
+                <a href="mailto:abhigyan.sharma6091@gmail.com" class="btn btn-primary">Transmit Email Signal</a>
+            </div>
+        </section>
+
+        <!-- Download Resume Section -->
+        <section id="resume-download" class="download-section">
+            <div class="download-terminal">
+                <div class="terminal-header">
+                    <div class="terminal-buttons">
+                        <span class="terminal-button close"></span>
+                        <span class="terminal-button minimize"></span>
+                        <span class="terminal-button maximize"></span>
+                    </div>
+                    <span class="terminal-title">bash_downloader.sh - AS_6091</span>
+                </div>
+                <div class="terminal-content">
+                    <div class="download-prompt">
+                        <span class="prompt-symbol">$</span> ./fetch_data --target=resume_abhigyan --format=pdf<br>
+                        <span>Establishing secure connection to Data Core...</span><br>
+                        <span>Authorization cleared. Parsing credentials.</span><br>
+                        <span>Locating payload: Abhigyan_Sharma_Resume.pdf</span><br>
+                        <span>Payload integrity verification: 100%</span><br>
+                        <span>Status: <span style="color:#00ffcc">READY_FOR_DEPLOYMENT</span></span><br>
+                        <span class="prompt-symbol">$</span> <span class="download-ready">Execute download sequence
+                            below:</span>
+                    </div>
+                    <a href="https://drive.google.com/file/d/16_UxVSG-IerIqJt7bmHCQedo0y2N3LXl/view?usp=drive_link"
+                        target="_blank" class="download-button">
+                        wget --secure Abhigyan_Sharma_Resume.pdf
+                    </a>
+                    <div style="margin-top: 15px; color: #5a7587; font-size: 0.8rem;">
+                        <span class="prompt-symbol">$</span> # Payload contains all DS/AI technical competencies and
+                        project deployments.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="social-links">
+                <a href="#" target="_blank"><span>in</span></a>
+                <a href="#" target="_blank"><span>gh</span></a>
+                <a href="mailto:abhigyan.sharma6091@gmail.com"><span>@</span></a>
+            </div>
+            <p>© 2026 Abhigyan Sharma Systems. All node data classified.</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">Architected for optimal logic and data retention.</p>
+        </footer>
+    </div>
+
+    <!-- AI Chatbot Interface -->
+    <div id="chatbot-container" class="chatbot-hidden">
+        <div class="chatbot-header">
+            <div class="chatbot-title">
+                <span>> ./Agent_Sharma_Core</span>
+            </div>
+            <button id="chatbot-close" class="chatbot-close">×</button>
+        </div>
+        <div class="chatbot-status">
+            <span class="status-dot"></span>
+            <span id="chatbot-status-text">Network: SYNCHRONIZED | AI_Model: Loaded</span>
+        </div>
+        <div id="chatbot-messages" class="chatbot-messages">
+        </div>
+        <div class="chatbot-input-container">
+            <input type="text" id="chatbot-input" placeholder="Enter query parameters..." maxlength="200">
+            <button id="chatbot-send">Submit</button>
+        </div>
+        <div class="chatbot-suggestions">
+            <button class="suggestion-btn" data-question="What are Abhigyan's NLP projects?">NLP Projects</button>
+            <button class="suggestion-btn" data-question="List AI core competencies">AI Skills</button>
+            <button class="suggestion-btn" data-question="JEE Advanced Rank?">Academic Stat</button>
+            <button class="suggestion-btn" data-question="What is B+ Tree Indexing project?">DBMS Logic</button>
+        </div>
+    </div>
+
+    <!-- Chatbot Toggle Button -->
+    <button id="chatbot-toggle" class="chatbot-toggle">
+        <span class="chatbot-toggle-icon">⎔</span>
+        <span class="chatbot-toggle-text">Init_Agent()</span>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
