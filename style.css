@@ -155,12 +155,53 @@ nav a:hover {
 .hero {
     min-height: 90vh;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4rem;
     padding: 0 10%;
     max-width: 1400px;
     margin: 0 auto;
+}
+
+.hero-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.hero-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-photo {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 50%;
+    border: 3px solid var(--accent-primary);
+    box-shadow: 0 0 30px rgba(0, 230, 204, 0.3);
+    object-fit: cover;
+    aspect-ratio: 1/1;
+    transition: 0.3s ease;
+}
+
+.profile-photo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(0, 230, 204, 0.5);
+}
+
+@media (max-width: 900px) {
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 2rem;
+    }
+    .hero-content {
+        align-items: center;
+    }
 }
 
 .hero h1 {
@@ -643,7 +684,7 @@ section {
     background: #0D1117;
     border-radius: 8px;
     overflow: hidden;
-    max-width: 800px;
+    max-width: 600px;
     margin: 0 auto;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     border: 1px solid var(--panel-border);

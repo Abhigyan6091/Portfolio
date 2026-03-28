@@ -534,7 +534,7 @@ document.addEventListener('DOMContentLoaded', () => {
             response = "The Disk-Based B+ Tree Index project implements low-level O(log n) database lookup logic, including disk page management, node splitting, and scalable storage mechanics in C++.";
         } else if (q.includes('poetry') || q.includes('nlp')) {
             response = "The Reciprocal Contextual Poetry Generation model leverages attention mechanisms and recurrent layers to ensure semantic coherence, trained on a tailored dataset of 5,000+ texts.";
-        } else if (q.includes('skill') || q.includes('tech') || q.includes('capabilities')) {
+        } else if (q.includes('skill') || q.includes('tech') || q.includes('capabilities') || q.includes('competencies')) {
             response = "Abhigyan's technical stack includes Python, C++, TensorFlow, PyTorch, FastAPI, and MySQL, with specialized expertise in Generative AI, RAG pipelines, and Data Engineering.";
         } else if (q.includes('rank') || q.includes('jee') || q.includes('iit')) {
             response = "He is currently a B.Tech student in DS & AI at IIT Bhilai. He secured an All India Rank (AIR) of 7445 in the prestigious JEE Advanced 2023 examination.";
