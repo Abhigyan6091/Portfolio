@@ -554,9 +554,9 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (q.includes('meta') || q.includes('hackercup')) {
             response = "Abhigyan is a Meta HackerCup'25 Round-2 Qualifier, demonstrating strong algorithmic problem-solving skills.";
         } else if (q.includes('codeforces') || q.includes('rating') || q.includes('competitive') || q.includes(' cp')) {
-            response = "Abhigyan is a 'Pupil' on Codeforces with a max rating of 1293, and actively competes in programming contests. He also qualified for Meta HackerCup'25 Round-2 and ranked 278th nationwide in the Amazon ML Challenge 2025.";
+            response = "Abhigyan is a 'Specialist' on Codeforces with a max rating of 1436, and actively competes in programming contests. He also qualified for Meta HackerCup'25 Round-2 and ranked 278th nationwide in the Amazon ML Challenge 2025.";
         } else if (q.includes('achievement') || q.includes('award') || q.includes('accomplish')) {
-            response = "Key achievements: AIR 7445 in JEE Advanced 2023; Codeforces Pupil (max rating 1293); Meta HackerCup'25 Round-2 Qualifier; 278th nationwide in Amazon ML Challenge 2025 (score 46.649); and NCC 'A' Certificate holder (A grade).";
+            response = "Key achievements: AIR 7445 in JEE Advanced 2023; Codeforces Specialist (max rating 1436); Meta HackerCup'25 Round-2 Qualifier; 278th nationwide in Amazon ML Challenge 2025 (score 46.649); and NCC 'A' Certificate holder (A grade).";
         } else if (q.includes('rank') || q.includes('jee')) {
             response = "Abhigyan secured an All India Rank (AIR) of 7445 in the JEE Advanced 2023 examination, and is currently a B.Tech student in Data Science & AI at IIT Bhilai.";
         } else if (q.includes('education') || q.includes('college') || q.includes('degree') || q.includes('cgpa') || q.includes('study') || q.includes('iit') || q.includes('school')) {
