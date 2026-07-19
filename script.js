@@ -519,35 +519,60 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Knowledge Base
         const q = query.toLowerCase();
-        let response = "Error: Input parameters not recognized in the current dataset. Please query: Projects, Experience, or Technical Skills.";
+        let response = "Error: Input parameters not recognized in the current dataset. Try the suggestion chips below, or query: Projects, Skills, Achievements, Education, or Contact.";
 
         // Comprehensive response logic
-        if (q.includes('pix2pix') || q.includes('gan')) {
-            response = "Abhigyan architected a Multi-Scale Pix2Pix GAN using PyTorch. It features U-Net generators and PatchGAN discriminators to achieve structure-aware image translation with a 0.08 SSIM improvement.";
-        } else if (q.includes('sql') || q.includes('agent')) {
-            response = "The Intelligent SQL Agent is an LLM-powered system (OpenAI/Mistral) that translates natural language into secure, schema-aware SQL queries, executing them safely to return structured data.";
-        } else if (q.includes('deepfake') || q.includes('clip')) {
-            response = "His Multimodal Deepfake Detection project utilizes a CLIP image encoder and a side-network-based decoder to extract spatial and temporal cues for robust forgery detection across diverse datasets.";
-        } else if (q.includes('hmm') || q.includes('fdr') || q.includes('flight')) {
-            response = "Using Hidden Markov Models (HMM), Abhigyan analyzed FDR data from 5,335 flights to identify optimal hidden states for flight dynamics using KL divergence as a model selection metric.";
-        } else if (q.includes('tree') || q.includes('dbms') || q.includes('index')) {
-            response = "The Disk-Based B+ Tree Index project implements low-level O(log n) database lookup logic, including disk page management, node splitting, and scalable storage mechanics in C++.";
+        // NOTE: order matters — more specific keywords are matched before generic ones.
+        if (q.includes('enterprise') || q.includes('multi-agent') || q.includes('multi agent') || q.includes('langgraph') || q.includes('data intelligence') || q.includes('data platform')) {
+            response = "The Enterprise AI Data Intelligence Platform is a production-grade, local-first multi-agent system built on LangGraph. It lets data/ML engineers conversationally investigate ETL pipelines, Airflow DAGs, data lineage, and SQL warehouses — featuring dynamic fan-out routing, Self-RAG hallucination validation, hybrid dense+BM25 retrieval with cross-encoder reranking, and a Next.js observability UI. Runs fully local via Ollama and Qdrant with zero API cost.";
+        } else if (q.includes('autograder') || q.includes('grading') || q.includes('grader')) {
+            response = "AutoGrader is an end-to-end GenAI code-grading platform for CS education. It uses Docker-sandboxed multi-language execution (Python, C, Java), a Django/DRF + Celery/Redis backend for concurrent grading at scale, and a local LLM feedback pipeline (Ollama: Llama 3 / Mistral) that delivers rubric-aligned pedagogical feedback — achieving 85% evaluation accuracy on open-ended answers.";
+        } else if (q.includes('deepfake') || q.includes('clip') || q.includes('forgery')) {
+            response = "His Spatial-Temporal-Frequency Deepfake Detection model is a state-of-the-art video detector fusing three branches: Facial Component Guidance attention on ViT-L/14 spatial features, a Bi-LSTM over per-frame CLS token sequences for temporal cues, and block-DCT spectral analysis for compression artifacts. It's optimized with gradient checkpointing and layer pruning to train under constrained (6GB) GPU VRAM.";
+        } else if (q.includes('pix2pix') || q.includes('gan') || q.includes('image translation')) {
+            response = "Abhigyan architected a Structure-Aware Multi-Scale Pix2Pix GAN in PyTorch. It uses U-Net generators and PatchGAN discriminators with multi-scale feature extraction plus perceptual and edge-consistency losses, trained on 12k image pairs to improve SSIM by 0.08 over the baseline.";
+        } else if (q.includes('sql') || (q.includes('agent') && !q.includes('multi'))) {
+            response = "The Intelligent SQL Agent is an LLM-powered system (OpenAI/Mistral) that converts plain English into safe, schema-aware SQL. It automatically identifies relevant tables, executes queries securely against a live database, and returns structured results via LLM-driven reasoning chains.";
+        } else if (q.includes('hmm') || q.includes('hidden') || q.includes('markov')) {
+            response = "The HMM project validates an advanced model-order selection algorithm against synthetic sequence data, automatically computing the optimal number of hidden states via dynamic penalized likelihood scoring to recover underlying structural data dynamics.";
+        } else if (q.includes('tree') || q.includes('dbms') || q.includes('index') || q.includes('b+')) {
+            response = "The Disk-Based B+ Tree Index is a persistent database index engine built from scratch in C++ using memory-mapped I/O. It delivers O(log n) lookups with automatic node splitting and 4096-byte page management, scaling to datasets larger than available RAM.";
         } else if (q.includes('poetry') || q.includes('nlp')) {
-            response = "The Reciprocal Contextual Poetry Generation model leverages attention mechanisms and recurrent layers to ensure semantic coherence, trained on a tailored dataset of 5,000+ texts.";
-        } else if (q.includes('skill') || q.includes('tech') || q.includes('capabilities') || q.includes('competencies')) {
-            response = "Abhigyan's technical stack includes Python, C++, TensorFlow, PyTorch, FastAPI, and MySQL, with specialized expertise in Generative AI, RAG pipelines, and Data Engineering.";
-        } else if (q.includes('rank') || q.includes('jee') || q.includes('iit')) {
-            response = "He is currently a B.Tech student in DS & AI at IIT Bhilai. He secured an All India Rank (AIR) of 7445 in the prestigious JEE Advanced 2023 examination.";
-        } else if (q.includes('codeforces') || q.includes('rating') || q.includes('cp')) {
-            response = "Abhigyan is a 'Pupil' on Codeforces with a max rating of 1293. He actively participates in competitive programming contests.";
-        } else if (q.includes('amazon') || q.includes('challenge')) {
+            response = "The Reciprocal Contextual Poetry Generation model fuses contextual embeddings, sequence layers, and attention blocks with reinforcement learning from human feedback. It builds a reciprocal context-learning flow where each generated verse conditions the next for semantic coherence, trained on 5,000+ texts to model human-AI creative collaboration.";
+        } else if (q.includes('llm') || q.includes('genai') || q.includes('gen ai') || q.includes('rag') || q.includes('generative')) {
+            response = "In Generative AI & LLMs, Abhigyan works with LLM fine-tuning (LoRA/PEFT), RAG and hybrid retrieval pipelines, multi-agent systems (LangGraph), prompt engineering & evaluation, LangChain/LlamaIndex/Ollama, and vector search (Qdrant, FAISS, Pinecone).";
+        } else if (q.includes('mlops') || q.includes('cloud') || q.includes('docker') || q.includes('kubernetes') || q.includes('deploy')) {
+            response = "On the MLOps & Cloud side, he works with Docker & containerization, CI/CD pipelines (GitHub Actions), AWS/GCP fundamentals, MLflow experiment tracking, model serving & deployment, and Kubernetes fundamentals.";
+        } else if (q.includes('data engineering') || q.includes('spark') || q.includes('kafka') || q.includes('airflow') || q.includes('etl') || q.includes('pipeline')) {
+            response = "His data engineering toolkit spans Apache Spark, Kafka, and Airflow, ETL/ELT pipeline design, data lineage & warehousing, async task queues (Celery, Redis), PostgreSQL/MySQL/MongoDB, and feature engineering at scale.";
+        } else if (q.includes('skill') || q.includes('tech') || q.includes('capabilities') || q.includes('competenc') || q.includes('stack') || q.includes('ml ') || q.includes('machine learning') || q.includes('ai ')) {
+            response = "Abhigyan's core stack covers Machine & Deep Learning, Generative AI & GANs, Computer Vision (ViT, CLIP, CNNs), Transformers & RLHF; Python/C++/Java/SQL with PyTorch, TensorFlow, and Hugging Face; FastAPI/Django and React/Next.js; plus data engineering, MLOps, and strong CS fundamentals. Ask about 'LLM', 'MLOps', or 'data engineering' for details.";
+        } else if (q.includes('amazon')) {
             response = "He ranked 278th nationwide in the Amazon ML Challenge 2025, achieving a scoring metric of 46.649.";
         } else if (q.includes('meta') || q.includes('hackercup')) {
             response = "Abhigyan is a Meta HackerCup'25 Round-2 Qualifier, demonstrating strong algorithmic problem-solving skills.";
-        } else if (q.includes('hello') || q.includes('hi') || q.includes('greet')) {
-            response = "Agent_Sharma_Core online. Systems synchronized. I am ready to recount Abhigyan's research data, project repositories, or technical competencies. What is your query?";
-        } else if (q.includes('who') || q.includes('about')) {
-            response = "Abhigyan Sharma is an AI and Data Science enthusiast at IIT Bhilai, focused on bridging the gap between theoretical deep learning research and robust system architecture.";
+        } else if (q.includes('codeforces') || q.includes('rating') || q.includes('competitive') || q.includes(' cp')) {
+            response = "Abhigyan is a 'Pupil' on Codeforces with a max rating of 1293, and actively competes in programming contests. He also qualified for Meta HackerCup'25 Round-2 and ranked 278th nationwide in the Amazon ML Challenge 2025.";
+        } else if (q.includes('achievement') || q.includes('award') || q.includes('accomplish')) {
+            response = "Key achievements: AIR 7445 in JEE Advanced 2023; Codeforces Pupil (max rating 1293); Meta HackerCup'25 Round-2 Qualifier; 278th nationwide in Amazon ML Challenge 2025 (score 46.649); and NCC 'A' Certificate holder (A grade).";
+        } else if (q.includes('rank') || q.includes('jee')) {
+            response = "Abhigyan secured an All India Rank (AIR) of 7445 in the JEE Advanced 2023 examination, and is currently a B.Tech student in Data Science & AI at IIT Bhilai.";
+        } else if (q.includes('education') || q.includes('college') || q.includes('degree') || q.includes('cgpa') || q.includes('study') || q.includes('iit') || q.includes('school')) {
+            response = "Education: B.Tech in Data Science & AI at IIT Bhilai (expected May 2027, CGPA 8.00/10). Class XII from Sai RNS Academy (AISSCE, 91.2%) and Class X from Sainik School Goalpara (AISSE, 96.2%).";
+        } else if (q.includes('leadership') || q.includes('lead') || q.includes('e-cell') || q.includes('committee') || q.includes('organiz')) {
+            response = "Leadership: Core Member of the Entrepreneurship Cell at IIT Bhilai (organized TED-style talks & pitching events); Meraz 6.0 organizer handling logistics for 2000+ attendees; chaired IIT Bhilai MUN'24; Mess Coordinator; and placement cell support volunteer.";
+        } else if (q.includes('intern') || q.includes('available') || q.includes('hire') || q.includes('hiring') || q.includes('opportunit') || q.includes('job') || q.includes('recruit')) {
+            response = "Yes — Abhigyan is actively seeking data science internships, open-source collaborations, and AI/ML opportunities. Reach out via LinkedIn or email abhigyan.sharma6091@gmail.com to start a conversation.";
+        } else if (q.includes('contact') || q.includes('email') || q.includes('reach') || q.includes('linkedin') || q.includes('connect')) {
+            response = "You can reach Abhigyan at abhigyan.sharma6091@gmail.com, or connect via LinkedIn, GitHub (@Abhigyan6091), WhatsApp, or Instagram — all linked in the 'Establish Comm Link' section above.";
+        } else if (q.includes('resume') || q.includes('cv') || q.includes('download')) {
+            response = "Abhigyan's resume is available in the 'Download Resume' terminal near the bottom of the page — it contains all DS/AI technical competencies and project deployments. Just click the 'wget --secure Abhigyan_Sharma_Resume.pdf' button.";
+        } else if (q.includes('project') || q.includes('work') || q.includes('portfolio') || q.includes('built') || q.includes('repo')) {
+            response = "Abhigyan has built 8+ projects: an Enterprise AI Data Intelligence Platform (LangGraph multi-agent), AutoGrader (GenAI code grading), Spatial-Temporal-Frequency Deepfake Detection, a Multi-Scale Pix2Pix GAN, an Intelligent SQL Agent, a Disk-Based B+ Tree DBMS index, Reciprocal Poetry Generation (NLP), and an HMM state-discovery project. Ask about any of them by name!";
+        } else if (q.includes('hello') || q.includes('hi ') || q === 'hi' || q.includes('hey') || q.includes('greet')) {
+            response = "Agent_Sharma_Core online. Systems synchronized. I can recount Abhigyan's projects, technical skills, achievements, education, or contact details. Pick a suggestion chip below or type your query.";
+        } else if (q.includes('who') || q.includes('about') || q.includes('abhigyan') || q.includes('himself')) {
+            response = "Abhigyan Sharma is an AI & Data Science undergraduate at IIT Bhilai, specializing in Generative AI, multi-agent LLM systems, computer vision, and data engineering. He bridges cutting-edge deep learning research with production-ready system architecture. Ask me about his projects, skills, or achievements!";
         }
 
         setTimeout(() => {
