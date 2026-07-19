@@ -145,109 +145,25 @@
         <section id="projects">
             <h2 class="section-title text-glitch" data-text="> ./Project Databanks">> ./Project Databanks</h2>
             <div class="projects-grid">
-                <!-- Project 1: Pix2Pix -->
+                <!-- Project 1: ShikshaSarthi -->
                 <div class="project-card">
                     <div class="project-img"
-                        style="background: url('https://images.unsplash.com/photo-1633265486064-086b219458ec?q=80&w=600&auto=format&fit=crop') center/cover;">
-                        <div class="img-overlay">GAN_ARCHITECTURE</div>
+                        style="background: url('https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=600&auto=format&fit=crop') center/cover;">
+                        <div class="img-overlay">OFFLINE_FIRST_EDTECH</div>
                     </div>
                     <div class="project-content">
-                        <h3>Structure-Aware Multi-Scale Pix2Pix</h3>
-                        <p>Engineered an attention-augmented image-to-image translation system on Pix2Pix GAN
-                            architectures (U-Net generators, PatchGAN discriminators) with multi-scale feature
-                            extraction and perceptual + edge-consistency losses. Trained on 12k image pairs in
-                            PyTorch, improving SSIM by 0.08 over the baseline.</p>
-                        <a href="https://github.com/Abhigyan6091/Structure-Aware-Multi-Scale-Pix2Pix" class="btn"
+                        <h3>ShikshaSarthi — Offline-First Learning Platform</h3>
+                        <p>Built a full-stack, offline-first school learning platform for classrooms with unreliable
+                            internet. Each school runs the entire app (React frontend, Node/Express API, MongoDB) on a
+                            local Docker server, while a small AWS cloud service handles versioned updates, backups, and
+                            bidirectional data sync. Features role-based access (Super Admin, School Admin, Teacher,
+                            Student), adaptive testing, quiz analytics, checksum-verified updates, and Gemini AI hints.</p>
+                        <a href="https://github.com/Abhigyan6091/ShikshaSarthi" class="btn"
                             target="_blank">Access Repository</a>
                     </div>
                 </div>
 
-                <!-- Project 2: DB Indexing -->
-                <div class="project-card">
-                    <div class="project-img"
-                        style="background: url('https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=600&auto=format&fit=crop') center/cover;">
-                        <div class="img-overlay">DB_INDEXING</div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Disk-Based B+ Tree Index for DBMS</h3>
-                        <p>Built a persistent, disk-based B+ Tree index engine from scratch in C++ using
-                            memory-mapped I/O, simulating production SQL indexing mechanics. Delivers O(log n)
-                            lookups with automatic node splitting and 4096-byte page management, scaling to
-                            datasets larger than available RAM.</p>
-                        <a href="https://github.com/Abhigyan6091/B_plus-Tree-disk-based-index-for-DBMS" class="btn"
-                            target="_blank">Access Repository</a>
-                    </div>
-                </div>
-
-                <!-- Project 3: NLP Sequence -->
-                <div class="project-card">
-                    <div class="project-img"
-                        style="background: url('https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=600&auto=format&fit=crop') center/cover;">
-                        <div class="img-overlay">NLP_SEQUENCE</div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Reciprocal Poetry Generation</h3>
-                        <p>Designed an NLP system fusing contextual embeddings, sequence layers, and attention
-                            blocks with reinforcement learning from human feedback. Built a reciprocal
-                            context-learning flow where each generated verse conditions the next for semantic
-                            coherence, trained on 5000+ texts to model human-AI creative collaboration.</p>
-                        <a href="https://github.com/Abhigyan6091/Reciprocal-Contextual-Poetry-Generation" class="btn"
-                            target="_blank">Access Repository</a>
-                    </div>
-                </div>
-
-                <!-- Project 4: Spatial-Temporal-Frequency Deepfake Detection -->
-                <div class="project-card">
-                    <div class="project-img"
-                        style="background: url('https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=600&auto=format&fit=crop') center/cover;">
-                        <div class="img-overlay">DEEPFAKE_STF</div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Spatial-Temporal-Frequency Deepfake Detection</h3>
-                        <p>Built a state-of-the-art video deepfake detector fusing three complementary branches:
-                            Facial Component Guidance attention on ViT-L/14 spatial features, a Bi-LSTM over
-                            per-frame CLS token sequences for temporal cues, and block-DCT spectral analysis for
-                            compression artifacts. Optimized with gradient checkpointing and layer pruning to train
-                            under constrained (6GB) GPU VRAM.</p>
-                        <a href="https://github.com/Abhigyan6091/Spatial-temporal-Frequency-Deepfake-detection"
-                            class="btn" target="_blank">Access Repository</a>
-                    </div>
-                </div>
-
-                <!-- Project 5: Intelligent SQL Agent -->
-                <div class="project-card">
-                    <div class="project-img"
-                        style="background: url('https://images.unsplash.com/photo-1516110833967-0b5716ca1387?q=80&w=600&auto=format&fit=crop') center/cover;">
-                        <div class="img-overlay">SQL_LLM_AGENT</div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Intelligent SQL Agent (OpenAI/Mistral)</h3>
-                        <p>Built a natural-language-to-SQL agent that converts plain English into safe, schema-aware
-                            SQL queries — automatically identifying relevant tables, executing queries securely
-                            against a live database, and returning structured results via LLM-driven reasoning
-                            chains.</p>
-                        <a href="https://github.com/Abhigyan6091/Intelligent-SQL-Agent" class="btn"
-                            target="_blank">Access Repository</a>
-                    </div>
-                </div>
-
-                <!-- Project 6: HMM on Synthetic Data -->
-                <div class="project-card">
-                    <div class="project-img"
-                        style="background: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=600&auto=format&fit=crop') center/cover;">
-                        <div class="img-overlay">HMM_SYNTHETIC</div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Hidden States in Synthetic Data via HMM</h3>
-                        <p>Validated an advanced HMM model-order selection algorithm against synthetic sequence
-                            data, automatically computing the optimal number of hidden states through dynamic
-                            penalized likelihood scoring to recover structural data dynamics.</p>
-                        <a href="https://github.com/Abhigyan6091/Finding-hidden-states-using-HMM-on-FDR-data"
-                            class="btn" target="_blank">Access Repository</a>
-                    </div>
-                </div>
-
-                <!-- Project 7: Enterprise AI Data Intelligence Platform -->
+                <!-- Project 2: Enterprise AI Data Intelligence Platform -->
                 <div class="project-card">
                     <div class="project-img"
                         style="background: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop') center/cover;">
@@ -265,7 +181,7 @@
                     </div>
                 </div>
 
-                <!-- Project 8: AutoGrader -->
+                <!-- Project 3: AutoGrader -->
                 <div class="project-card">
                     <div class="project-img"
                         style="background: url('https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=600&auto=format&fit=crop') center/cover;">
@@ -280,6 +196,108 @@
                             accuracy on open-ended answers.</p>
                         <a href="https://github.com/Abhigyan6091/AutoGrader" class="btn"
                             target="_blank">Access Repository</a>
+                    </div>
+                </div>
+
+                <!-- Project 4: Pix2Pix -->
+                <div class="project-card">
+                    <div class="project-img"
+                        style="background: url('https://images.unsplash.com/photo-1633265486064-086b219458ec?q=80&w=600&auto=format&fit=crop') center/cover;">
+                        <div class="img-overlay">GAN_ARCHITECTURE</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Structure-Aware Multi-Scale Pix2Pix</h3>
+                        <p>Engineered an attention-augmented image-to-image translation system on Pix2Pix GAN
+                            architectures (U-Net generators, PatchGAN discriminators) with multi-scale feature
+                            extraction and perceptual + edge-consistency losses. Trained on 12k image pairs in
+                            PyTorch, improving SSIM by 0.08 over the baseline.</p>
+                        <a href="https://github.com/Abhigyan6091/Structure-Aware-Multi-Scale-Pix2Pix" class="btn"
+                            target="_blank">Access Repository</a>
+                    </div>
+                </div>
+
+                <!-- Project 5: DB Indexing -->
+                <div class="project-card">
+                    <div class="project-img"
+                        style="background: url('https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=600&auto=format&fit=crop') center/cover;">
+                        <div class="img-overlay">DB_INDEXING</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Disk-Based B+ Tree Index for DBMS</h3>
+                        <p>Built a persistent, disk-based B+ Tree index engine from scratch in C++ using
+                            memory-mapped I/O, simulating production SQL indexing mechanics. Delivers O(log n)
+                            lookups with automatic node splitting and 4096-byte page management, scaling to
+                            datasets larger than available RAM.</p>
+                        <a href="https://github.com/Abhigyan6091/B_plus-Tree-disk-based-index-for-DBMS" class="btn"
+                            target="_blank">Access Repository</a>
+                    </div>
+                </div>
+
+                <!-- Project 6: NLP Sequence -->
+                <div class="project-card">
+                    <div class="project-img"
+                        style="background: url('https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=600&auto=format&fit=crop') center/cover;">
+                        <div class="img-overlay">NLP_SEQUENCE</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Reciprocal Poetry Generation</h3>
+                        <p>Designed an NLP system fusing contextual embeddings, sequence layers, and attention
+                            blocks with reinforcement learning from human feedback. Built a reciprocal
+                            context-learning flow where each generated verse conditions the next for semantic
+                            coherence, trained on 5000+ texts to model human-AI creative collaboration.</p>
+                        <a href="https://github.com/Abhigyan6091/Reciprocal-Contextual-Poetry-Generation" class="btn"
+                            target="_blank">Access Repository</a>
+                    </div>
+                </div>
+
+                <!-- Project 7: Spatial-Temporal-Frequency Deepfake Detection -->
+                <div class="project-card">
+                    <div class="project-img"
+                        style="background: url('https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=600&auto=format&fit=crop') center/cover;">
+                        <div class="img-overlay">DEEPFAKE_STF</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Spatial-Temporal-Frequency Deepfake Detection</h3>
+                        <p>Built a state-of-the-art video deepfake detector fusing three complementary branches:
+                            Facial Component Guidance attention on ViT-L/14 spatial features, a Bi-LSTM over
+                            per-frame CLS token sequences for temporal cues, and block-DCT spectral analysis for
+                            compression artifacts. Optimized with gradient checkpointing and layer pruning to train
+                            under constrained (6GB) GPU VRAM.</p>
+                        <a href="https://github.com/Abhigyan6091/Spatial-temporal-Frequency-Deepfake-detection"
+                            class="btn" target="_blank">Access Repository</a>
+                    </div>
+                </div>
+
+                <!-- Project 8: Intelligent SQL Agent -->
+                <div class="project-card">
+                    <div class="project-img"
+                        style="background: url('https://images.unsplash.com/photo-1516110833967-0b5716ca1387?q=80&w=600&auto=format&fit=crop') center/cover;">
+                        <div class="img-overlay">SQL_LLM_AGENT</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Intelligent SQL Agent (OpenAI/Mistral)</h3>
+                        <p>Built a natural-language-to-SQL agent that converts plain English into safe, schema-aware
+                            SQL queries — automatically identifying relevant tables, executing queries securely
+                            against a live database, and returning structured results via LLM-driven reasoning
+                            chains.</p>
+                        <a href="https://github.com/Abhigyan6091/Intelligent-SQL-Agent" class="btn"
+                            target="_blank">Access Repository</a>
+                    </div>
+                </div>
+
+                <!-- Project 9: HMM on Synthetic Data -->
+                <div class="project-card">
+                    <div class="project-img"
+                        style="background: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=600&auto=format&fit=crop') center/cover;">
+                        <div class="img-overlay">HMM_SYNTHETIC</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Hidden States in Synthetic Data via HMM</h3>
+                        <p>Validated an advanced HMM model-order selection algorithm against synthetic sequence
+                            data, automatically computing the optimal number of hidden states through dynamic
+                            penalized likelihood scoring to recover structural data dynamics.</p>
+                        <a href="https://github.com/Abhigyan6091/Finding-hidden-states-using-HMM-on-FDR-data"
+                            class="btn" target="_blank">Access Repository</a>
                     </div>
                 </div>
             </div>
@@ -316,11 +334,23 @@
                     <h3>Languages & Frameworks</h3>
                     <ul class="skill-list">
                         <li>Python, C++, Java, C, SQL</li>
+                        <li>JavaScript / TypeScript</li>
                         <li>PyTorch, TensorFlow, Scikit-Learn</li>
                         <li>Hugging Face Transformers</li>
                         <li>NumPy, Pandas, OpenCV, Matplotlib</li>
                         <li>FastAPI, Flask, Django, DRF</li>
-                        <li>React, Next.js, TypeScript</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Full-Stack & Web</h3>
+                    <ul class="skill-list">
+                        <li>React, Next.js</li>
+                        <li>Node.js, Express, REST APIs</li>
+                        <li>MongoDB, Mongoose, PostgreSQL</li>
+                        <li>nginx, JWT & Role-Based Auth</li>
+                        <li>Offline-First & Data Sync</li>
+                        <li>Cloudinary, Gemini API Integration</li>
                     </ul>
                 </div>
 
@@ -339,9 +369,9 @@
                 <div class="skill-category">
                     <h3>MLOps & Cloud</h3>
                     <ul class="skill-list">
-                        <li>Docker & Containerization</li>
+                        <li>Docker & Docker Compose</li>
                         <li>CI/CD Pipelines (GitHub Actions)</li>
-                        <li>AWS / GCP Fundamentals</li>
+                        <li>AWS (Cloud Sync, Backups, Deploy)</li>
                         <li>MLflow & Experiment Tracking</li>
                         <li>Model Serving & Deployment</li>
                         <li>Kubernetes (Fundamentals)</li>
@@ -399,7 +429,7 @@
             </p>
 
             <div class="comm-grid">
-                <a href="https://www.linkedin.com/in/abhigyan-sharma-73b094304" target="_blank" class="comm-card">
+                <a href="https://www.linkedin.com/in/abhigyan6091/" target="_blank" class="comm-card">
                     <span class="comm-icon">in</span>
                     <span class="comm-text">LinkedIn_Profile</span>
                 </a>
@@ -445,7 +475,7 @@
                         <span class="prompt-symbol">$</span> <span class="download-ready">Execute download sequence
                             below:</span>
                     </div>
-                    <a href="https://drive.google.com/file/d/16_UxVSG-IerIqJt7bmHCQedo0y2N3LXl/view?usp=drive_link"
+                    <a href="https://drive.google.com/drive/folders/1IFhOOS10fz8XHadQgnSte0jYoJUpW2bR"
                         target="_blank" class="download-button">
                         wget --secure Abhigyan_Sharma_Resume.pdf
                     </a>
@@ -488,6 +518,7 @@
         </div>
         <div class="chatbot-suggestions">
             <button class="suggestion-btn" data-question="Who is Abhigyan Sharma?">Who is he?</button>
+            <button class="suggestion-btn" data-question="Tell me about the ShikshaSarthi project">ShikshaSarthi</button>
             <button class="suggestion-btn" data-question="Tell me about the Enterprise AI Data Intelligence Platform">Multi-Agent Platform</button>
             <button class="suggestion-btn" data-question="Tell me about the AutoGrader project">AutoGrader</button>
             <button class="suggestion-btn" data-question="How does the deepfake detection project work?">Deepfake Detection</button>
