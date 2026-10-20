@@ -569,8 +569,26 @@ document.addEventListener('DOMContentLoaded', () => {
             response = "You can reach Abhigyan at abhigyan.sharma6091@gmail.com, or connect via LinkedIn, GitHub (@Abhigyan6091), WhatsApp, or Instagram — all linked in the 'Establish Comm Link' section above.";
         } else if (q.includes('resume') || q.includes('cv') || q.includes('download')) {
             response = "Abhigyan's resume is available in the 'Download Resume' terminal near the bottom of the page — it contains all DS/AI technical competencies and project deployments. Just click the 'wget --secure Abhigyan_Sharma_Resume.pdf' button.";
+        } else if (q.includes('aeip') || q.includes('autonomous engineering') || q.includes('sre agent')) {
+            response = "The Autonomous Engineering Intelligence Platform (AEIP) is a full-lifecycle autonomous SRE agent platform for production software engineering and infrastructure management. Built with LangGraph, FastAPI, and Next.js, it features a dual-loop architecture (fast-loop triage & slow-loop deep investigation), multi-agent investigation teams, root cause analysis, and blast-radius analysis with human approvals.";
+        } else if (q.includes('toolforge') || q.includes('mcp') || q.includes('agent tool')) {
+            response = "ToolForge is a production-ready agent tool execution runtime and Model Context Protocol (MCP) server implementation. It features governed code execution, 26 standard tools across filesystem, system, and web APIs, hybrid RBAC and capability security, token-budgeted outputs, and sustains 533+ ops/sec with sub-millisecond p95 latency.";
+        } else if (q.includes('fraud') || q.includes('risk manager') || q.includes('merchant')) {
+            response = "The AI Risk Manager is a real-time merchant fraud prevention engine processing 500,000+ transactions with expected loss decisioning that dynamically balances fraud losses against false-positive customer insult costs. It integrates XGBoost, LightGBM, and Isolation Forest models with SHAP reasoning and an interactive Streamlit simulation.";
+        } else if (q.includes('trade') || q.includes('trading') || q.includes('backtest') || q.includes('quant')) {
+            response = "The Strategic Trade Analyzer is an algorithmic trading backtesting engine and risk gating pipeline with strict anti-lookahead guarantees, realistic transaction costs, and portfolio constraints. Features event-driven backtesting across technical strategies, ML trade validation via XGBoost probability scoring, Monte Carlo stress testing, and a 609-test test suite.";
+        } else if (q.includes('pond') || q.includes('village pond') || q.includes('gis') || q.includes('hydro')) {
+            response = "The Village Pond Planning System is an automated geospatial and hydrological planning platform to optimize village pond site selection and catchment management. It combines DEM terrain analysis, multi-criteria land suitability modeling, Open-Meteo runoff calculations, and interactive 3D visualizations for sustainable rural water conservation.";
+        } else if (q.includes('winguard') || q.includes('process isolation') || q.includes('isolation') || q.includes('job objects')) {
+            response = "The WinGuard Framework is a zero-dependency C security framework leveraging native Win32 APIs (Job Objects, Restricted Security Tokens, IO Completion Ports) to implement an adaptive 3-tier containment system for untrusted Windows processes with a 25ms telemetry feedback loop, memory limiting, and real-time CPU throttling.";
+        } else if (q.includes('peerscribe') || q.includes('mesh') || q.includes('p2p') || q.includes('clinical') || q.includes('triage')) {
+            response = "PeerScribe is an offline-first, peer-to-peer clinical documentation and disaster response mesh network. Built with Node.js, SQLite WAL mode, and CRDT vector clocks for conflict-free multi-medic synchronization, it features START disaster triage, voice memo queues, and a Delay-Tolerant Networking (DTN) epidemic protocol designed for zero-connectivity field operations.";
+        } else if (q.includes('sentinel') || q.includes('aegis') || q.includes('red-teaming') || q.includes('red team') || q.includes('jailbreak')) {
+            response = "Sentinel Aegis is a local, portfolio-grade AI application security and red-teaming platform. It demonstrates practical controls for prompt injection detection, jailbreaks, PII redaction, context firewalls for RAG retrieval, policy-based tool authorization, adversarial attack campaigns, and automated CI security gates.";
+        } else if (q.includes('thz') || q.includes('terahertz') || q.includes('ap deployment') || q.includes('milp') || q.includes('human mobility')) {
+            response = "The Volumetric THz AP Deployment project is an optimization engine and 3D propagation physics simulator for deploying directional Terahertz Access Points in indoor spaces. Powered by Mixed-Integer Linear Programming (MILP via PuLP and HiGHS), it models molecular absorption, hardware beamwidth trade-offs, and dynamic human blockage resilience using real-world pedestrian trajectory data.";
         } else if (q.includes('project') || q.includes('work') || q.includes('portfolio') || q.includes('built') || q.includes('repo')) {
-            response = "Abhigyan has built 9+ projects: ShikshaSarthi (offline-first full-stack EdTech platform), an Enterprise AI Data Intelligence Platform (LangGraph multi-agent), AutoGrader (GenAI code grading), Spatial-Temporal-Frequency Deepfake Detection, a Multi-Scale Pix2Pix GAN, an Intelligent SQL Agent, a Disk-Based B+ Tree DBMS index, Reciprocal Poetry Generation (NLP), and an HMM state-discovery project. Ask about any of them by name!";
+            response = "Abhigyan's portfolio features 18 databanks in an interactive 3D circular carousel, including Sentinel Aegis (AI App Security & Red-Teaming), Volumetric THz AP Deployment, Autonomous Engineering Intelligence Platform (AEIP), ToolForge (MCP), AI Risk Manager, Strategic Trade Analyzer, Village Pond Planning, WinGuard, PeerScribe, ShikshaSarthi, AutoGrader, Multi-Scale Pix2Pix GAN, Deepfake Detection, and more. Drag horizontally or use the arrows on the carousel above to inspect any of them!";
         } else if (q.includes('hello') || q.includes('hi ') || q === 'hi' || q.includes('hey') || q.includes('greet')) {
             response = "Agent_Sharma_Core online. Systems synchronized. I can recount Abhigyan's projects, technical skills, achievements, education, or contact details. Pick a suggestion chip below or type your query.";
         } else if (q.includes('who') || q.includes('about') || q.includes('abhigyan') || q.includes('himself')) {
@@ -600,4 +618,341 @@ document.addEventListener('DOMContentLoaded', () => {
             processQuery(e.target.getAttribute('data-question'));
         });
     });
+
+    /* =========================================
+       6. 3D Circular Project Carousel Engine
+       ========================================= */
+    function init3DProjectCarousel() {
+        const stageContainer = document.getElementById('project-carousel-container');
+        const stage = document.getElementById('carousel-stage');
+        const ring = document.getElementById('carousel-ring');
+        if (!stageContainer || !stage || !ring) return;
+
+        const cards = Array.from(ring.querySelectorAll('.carousel-card'));
+        const totalCards = cards.length;
+        if (totalCards === 0) return;
+
+        const prevBtn = document.getElementById('carousel-prev');
+        const nextBtn = document.getElementById('carousel-next');
+        const currentCounter = document.getElementById('carousel-current');
+        const totalCounter = document.getElementById('carousel-total');
+        const dotsContainer = document.getElementById('carousel-dots');
+
+        // Dynamic 3D Geometry calculation
+        const angleStep = 360 / totalCards;
+        let radius = 800; // dynamically calculated based on card width
+        let currentRotation = 0; // in degrees
+        let targetRotation = 0;
+        let activeIndex = 0;
+
+        // Interaction state
+        let isPointerDown = false;
+        let startX = 0;
+        let startY = 0;
+        let startRotation = 0;
+        let lastX = 0;
+        let lastTime = 0;
+        let velocity = 0;
+        let hasDragged = false;
+        let suppressLinkClick = false;
+        let suppressTimeout = null;
+
+        // Update total counter in HUD
+        if (totalCounter) {
+            totalCounter.textContent = String(totalCards).padStart(2, '0');
+        }
+
+        // Build pagination dots dynamically
+        if (dotsContainer) {
+            dotsContainer.innerHTML = '';
+            cards.forEach((card, i) => {
+                const dot = document.createElement('button');
+                dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+                const titleText = card.querySelector('h3')?.textContent || `Project ${i + 1}`;
+                dot.setAttribute('aria-label', `Navigate to project ${i + 1}: ${titleText}`);
+                dot.setAttribute('role', 'tab');
+                dot.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+                dot.setAttribute('tabindex', '0');
+                dot.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    rotateToCard(i);
+                });
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        const dots = dotsContainer ? Array.from(dotsContainer.querySelectorAll('.carousel-dot')) : [];
+
+        // Compute geometry based on actual DOM measurements
+        function computeRadius() {
+            // Read width of a card (or fallback to 350)
+            const cardWidth = cards[0].offsetWidth || 350;
+            // Radius of regular N-gon: R = (W / 2) / tan(PI / N)
+            const calculatedRadius = Math.round((cardWidth / 2) / Math.tan(Math.PI / totalCards));
+            // Add margin for clear separation and aesthetic arc curvature
+            radius = Math.max(calculatedRadius + 30, 480);
+
+            // Position each card on the 3D ring
+            cards.forEach((card, index) => {
+                const cardAngle = index * angleStep;
+                card.style.transform = `rotateY(${cardAngle}deg) translateZ(${radius}px)`;
+            });
+
+            // Update ring position and visual depth classes
+            applyRingTransform(currentRotation, false);
+            updateCardVisualStates(currentRotation);
+        }
+
+        // Apply transform to virtual ring
+        function applyRingTransform(deg, withTransition = true) {
+            if (withTransition) {
+                ring.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+            } else {
+                ring.style.transition = 'none';
+            }
+            ring.style.transform = `translateZ(-${radius}px) rotateY(${deg}deg)`;
+        }
+
+        // Normalize angle to [-180, 180]
+        function normalizeAngle(deg) {
+            return ((((deg % 360) + 540) % 360) - 180);
+        }
+
+        // Update card visual prominence (active vs neighbor vs hidden)
+        function updateCardVisualStates(deg) {
+            // Find active index based on rotation
+            const rawIndex = Math.round(-deg / angleStep);
+            activeIndex = (((rawIndex % totalCards) + totalCards) % totalCards);
+
+            // Update HUD counter
+            if (currentCounter) {
+                currentCounter.textContent = String(activeIndex + 1).padStart(2, '0');
+            }
+
+            // Update dots
+            dots.forEach((dot, i) => {
+                const isActive = (i === activeIndex);
+                dot.classList.toggle('active', isActive);
+                dot.setAttribute('aria-selected', isActive ? 'true' : 'false');
+            });
+
+            // Update each card depth & classes
+            cards.forEach((card, i) => {
+                const cardAngle = i * angleStep;
+                const relativeAngle = Math.abs(normalizeAngle(cardAngle + deg));
+
+                card.classList.remove('is-active-card', 'is-neighbor-card', 'is-far-card', 'is-hidden-card');
+
+                if (i === activeIndex) {
+                    card.classList.add('is-active-card');
+                    card.setAttribute('aria-hidden', 'false');
+                    card.tabIndex = 0;
+                } else if (relativeAngle < angleStep * 1.5) {
+                    card.classList.add('is-neighbor-card');
+                    card.setAttribute('aria-hidden', 'false');
+                    card.tabIndex = -1;
+                } else if (relativeAngle < 85) {
+                    card.classList.add('is-far-card');
+                    card.setAttribute('aria-hidden', 'false');
+                    card.tabIndex = -1;
+                } else {
+                    card.classList.add('is-hidden-card');
+                    card.setAttribute('aria-hidden', 'true');
+                    card.tabIndex = -1;
+                }
+            });
+        }
+
+        // Navigate to a specific card index by shortest path
+        function rotateToCard(targetIdx) {
+            const normalizedTarget = (((targetIdx % totalCards) + totalCards) % totalCards);
+            const currentNorm = (((activeIndex % totalCards) + totalCards) % totalCards);
+            let diff = normalizedTarget - currentNorm;
+
+            // Shortest rotational path around circle
+            if (diff > totalCards / 2) diff -= totalCards;
+            if (diff < -totalCards / 2) diff += totalCards;
+
+            const steps = diff;
+            const newTargetRotation = targetRotation - steps * angleStep;
+            
+            targetRotation = newTargetRotation;
+            currentRotation = targetRotation;
+            applyRingTransform(currentRotation, true);
+            updateCardVisualStates(currentRotation);
+        }
+
+        function rotateToPrev() {
+            targetRotation += angleStep;
+            currentRotation = targetRotation;
+            applyRingTransform(currentRotation, true);
+            updateCardVisualStates(currentRotation);
+        }
+
+        function rotateToNext() {
+            targetRotation -= angleStep;
+            currentRotation = targetRotation;
+            applyRingTransform(currentRotation, true);
+            updateCardVisualStates(currentRotation);
+        }
+
+        // Pointer event handlers (mouse + touch unified)
+        function onPointerDown(e) {
+            // Ignore if secondary mouse button
+            if (e.pointerType === 'mouse' && e.button !== 0) return;
+
+            isPointerDown = true;
+            hasDragged = false;
+            startX = e.clientX;
+            startY = e.clientY;
+            startRotation = currentRotation;
+            lastX = e.clientX;
+            lastTime = performance.now();
+            velocity = 0;
+
+            stage.classList.add('is-dragging');
+            ring.style.transition = 'none';
+
+            // Capture pointer for smooth dragging even outside container
+            if (stage.setPointerCapture) {
+                try { stage.setPointerCapture(e.pointerId); } catch (_) {}
+            }
+        }
+
+        function onPointerMove(e) {
+            if (!isPointerDown) return;
+
+            const deltaX = e.clientX - startX;
+            const deltaY = e.clientY - startY;
+            const dist = Math.hypot(deltaX, deltaY);
+
+            if (dist > 7) {
+                hasDragged = true;
+            }
+
+            // Calculate velocity
+            const now = performance.now();
+            const dt = Math.max(now - lastTime, 1);
+            velocity = (e.clientX - lastX) / dt;
+            lastX = e.clientX;
+            lastTime = now;
+
+            // Tangential sensitivity: ~0.18 deg/px
+            const sensitivity = 0.18;
+            currentRotation = startRotation + deltaX * sensitivity;
+
+            applyRingTransform(currentRotation, false);
+            updateCardVisualStates(currentRotation);
+        }
+
+        function onPointerUp(e) {
+            if (!isPointerDown) return;
+            isPointerDown = false;
+            stage.classList.remove('is-dragging');
+
+            if (stage.releasePointerCapture) {
+                try { stage.releasePointerCapture(e.pointerId); } catch (_) {}
+            }
+
+            if (hasDragged) {
+                suppressLinkClick = true;
+                clearTimeout(suppressTimeout);
+                suppressTimeout = setTimeout(() => {
+                    suppressLinkClick = false;
+                }, 150);
+
+                // Inertia & Snap to nearest card
+                let snapIndex = Math.round(-currentRotation / angleStep);
+                if (velocity > 0.45) {
+                    snapIndex = Math.floor(-currentRotation / angleStep);
+                } else if (velocity < -0.45) {
+                    snapIndex = Math.ceil(-currentRotation / angleStep);
+                }
+
+                targetRotation = -snapIndex * angleStep;
+                currentRotation = targetRotation;
+                applyRingTransform(currentRotation, true);
+                updateCardVisualStates(currentRotation);
+            }
+        }
+
+        function onPointerCancel(e) {
+            if (!isPointerDown) return;
+            onPointerUp(e);
+        }
+
+        // Attach pointer listeners to stage
+        stage.addEventListener('pointerdown', onPointerDown);
+        stage.addEventListener('pointermove', onPointerMove);
+        stage.addEventListener('pointerup', onPointerUp);
+        stage.addEventListener('pointercancel', onPointerCancel);
+
+        // Prevent accidental link activation during drag and handle card click
+        cards.forEach((card, idx) => {
+            card.addEventListener('click', (e) => {
+                if (hasDragged || suppressLinkClick) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    return;
+                }
+
+                const link = e.target.closest('a');
+                if (idx !== activeIndex) {
+                    // Clicking non-active card brings it to the front
+                    e.preventDefault();
+                    rotateToCard(idx);
+                } else {
+                    // On active card, clicking link is allowed
+                    if (!link) {
+                        // Card is already active
+                    }
+                }
+            });
+
+            // If card gains focus via Tab key, rotate to it
+            card.addEventListener('focusin', () => {
+                if (idx !== activeIndex && !isPointerDown) {
+                    rotateToCard(idx);
+                }
+            });
+        });
+
+        // Arrow button listeners
+        if (prevBtn) prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            rotateToPrev();
+        });
+
+        if (nextBtn) nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            rotateToNext();
+        });
+
+        // Keyboard navigation on container
+        stageContainer.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                rotateToPrev();
+            } else if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                rotateToNext();
+            }
+        });
+
+        // Window resize handling (debounced)
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                computeRadius();
+            }, 100);
+        });
+
+        // Initial compute and setup
+        computeRadius();
+    }
+
+    // Initialize 3D Project Carousel
+    init3DProjectCarousel();
 });
+
