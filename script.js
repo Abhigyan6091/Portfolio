@@ -469,9 +469,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!welcomeShown) {
             welcomeShown = true;
             setTimeout(() => {
-                const welcomeText = "Greetings user. I am Agent_Sharma_Core—an AI representation of Abhigyan's profile. I can recount research on deepfake detection, HMM flight dynamics, SQL agents, and more. Query me.";
+                const welcomeText = "Agent_Sharma_Core online. Systems synchronized. I am an interactive intelligence agent for Abhigyan Sharma — Agentic AI & ML Enthusiast, IIT Bhilai. I have indexed all 18 project databanks, 11 technical capability domains, competitive achievements, and research systems. Query me or select a protocol chip below.";
                 appendMessage('bot', welcomeText, true);
-            }, 500);
+            }, 300);
         }
     });
 
@@ -494,16 +494,21 @@ document.addEventListener('DOMContentLoaded', () => {
             const textSpan = div.querySelector('.message-text');
             const cursor = div.querySelector('.typing-cursor');
             let i = 0;
+            // Strip HTML tags for clean typewriter display, then render complete HTML at end
+            const plainText = text.replace(/<[^>]*>/g, '');
             const interval = setInterval(() => {
-                if (i < text.length) {
-                    textSpan.textContent += text.charAt(i);
+                if (i < plainText.length) {
+                    textSpan.textContent += plainText.charAt(i);
                     i++;
                     messagesBody.scrollTop = messagesBody.scrollHeight;
                 } else {
                     clearInterval(interval);
                     cursor.remove();
+                    if (text.includes('<')) {
+                        textSpan.innerHTML = text;
+                    }
                 }
-            }, 20);
+            }, 10);
         }
         messagesBody.scrollTop = messagesBody.scrollHeight;
     }
@@ -517,82 +522,143 @@ document.addEventListener('DOMContentLoaded', () => {
         statusText.textContent = "Status: ANALYSING_QUERY...";
         statusText.style.color = "var(--accent-primary)";
 
-        // Knowledge Base
-        const q = query.toLowerCase();
-        let response = "Error: Input parameters not recognized in the current dataset. Try the suggestion chips below, or query: Projects, Skills, Achievements, Education, or Contact.";
+        const q = query.toLowerCase().trim();
+        let response = "";
 
-        // Comprehensive response logic
-        // NOTE: order matters — more specific keywords are matched before generic ones.
-        if (q.includes('shiksha') || q.includes('siksha') || q.includes('sarthi') || q.includes('edtech') || q.includes('offline-first') || q.includes('offline first') || q.includes('learning platform') || q.includes('school')) {
-            response = "ShikshaSarthi is a full-stack, offline-first school learning platform built for classrooms with unreliable internet. Each school runs the entire app (React frontend, Node/Express API, MongoDB) on a local Docker server, while a small AWS cloud service handles versioned updates, checksum-verified installs, backups, and bidirectional data sync. It features role-based access (Super Admin, School Admin, Teacher, Student), adaptive testing, quiz analytics, and Gemini AI hints — schools never depend on the cloud to keep teaching day to day.";
-        } else if (q.includes('enterprise') || q.includes('multi-agent') || q.includes('multi agent') || q.includes('langgraph') || q.includes('data intelligence') || q.includes('data platform')) {
-            response = "The Enterprise AI Data Intelligence Platform is a production-grade, local-first multi-agent system built on LangGraph. It lets data/ML engineers conversationally investigate ETL pipelines, Airflow DAGs, data lineage, and SQL warehouses — featuring dynamic fan-out routing, Self-RAG hallucination validation, hybrid dense+BM25 retrieval with cross-encoder reranking, and a Next.js observability UI. Runs fully local via Ollama and Qdrant with zero API cost.";
-        } else if (q.includes('autograder') || q.includes('grading') || q.includes('grader')) {
-            response = "AutoGrader is an end-to-end GenAI code-grading platform for CS education. It uses Docker-sandboxed multi-language execution (Python, C, Java), a Django/DRF + Celery/Redis backend for concurrent grading at scale, and a local LLM feedback pipeline (Ollama: Llama 3 / Mistral) that delivers rubric-aligned pedagogical feedback — achieving 85% evaluation accuracy on open-ended answers.";
-        } else if (q.includes('deepfake') || q.includes('clip') || q.includes('forgery')) {
-            response = "His Spatial-Temporal-Frequency Deepfake Detection model is a state-of-the-art video detector fusing three branches: Facial Component Guidance attention on ViT-L/14 spatial features, a Bi-LSTM over per-frame CLS token sequences for temporal cues, and block-DCT spectral analysis for compression artifacts. It's optimized with gradient checkpointing and layer pruning to train under constrained (6GB) GPU VRAM.";
-        } else if (q.includes('pix2pix') || q.includes('gan') || q.includes('image translation')) {
-            response = "Abhigyan architected a Structure-Aware Multi-Scale Pix2Pix GAN in PyTorch. It uses U-Net generators and PatchGAN discriminators with multi-scale feature extraction plus perceptual and edge-consistency losses, trained on 12k image pairs to improve SSIM by 0.08 over the baseline.";
-        } else if (q.includes('sql') || (q.includes('agent') && !q.includes('multi'))) {
-            response = "The Intelligent SQL Agent is an LLM-powered system (OpenAI/Mistral) that converts plain English into safe, schema-aware SQL. It automatically identifies relevant tables, executes queries securely against a live database, and returns structured results via LLM-driven reasoning chains.";
-        } else if (q.includes('hmm') || q.includes('hidden') || q.includes('markov')) {
-            response = "The HMM project validates an advanced model-order selection algorithm against synthetic sequence data, automatically computing the optimal number of hidden states via dynamic penalized likelihood scoring to recover underlying structural data dynamics.";
-        } else if (q.includes('tree') || q.includes('dbms') || q.includes('index') || q.includes('b+')) {
-            response = "The Disk-Based B+ Tree Index is a persistent database index engine built from scratch in C++ using memory-mapped I/O. It delivers O(log n) lookups with automatic node splitting and 4096-byte page management, scaling to datasets larger than available RAM.";
-        } else if (q.includes('poetry') || q.includes('nlp')) {
-            response = "The Reciprocal Contextual Poetry Generation model fuses contextual embeddings, sequence layers, and attention blocks with reinforcement learning from human feedback. It builds a reciprocal context-learning flow where each generated verse conditions the next for semantic coherence, trained on 5,000+ texts to model human-AI creative collaboration.";
-        } else if (q.includes('llm') || q.includes('genai') || q.includes('gen ai') || q.includes('rag') || q.includes('generative')) {
-            response = "In Generative AI & LLMs, Abhigyan works with LLM fine-tuning (LoRA/PEFT), RAG and hybrid retrieval pipelines, multi-agent systems (LangGraph), prompt engineering & evaluation, LangChain/LlamaIndex/Ollama, and vector search (Qdrant, FAISS, Pinecone).";
-        } else if (q.includes('mlops') || q.includes('cloud') || q.includes('docker') || q.includes('kubernetes') || q.includes('deploy')) {
-            response = "On the MLOps & Cloud side, he works with Docker & containerization, CI/CD pipelines (GitHub Actions), AWS/GCP fundamentals, MLflow experiment tracking, model serving & deployment, and Kubernetes fundamentals.";
-        } else if (q.includes('data engineering') || q.includes('spark') || q.includes('kafka') || q.includes('airflow') || q.includes('etl') || q.includes('pipeline')) {
-            response = "His data engineering toolkit spans Apache Spark, Kafka, and Airflow, ETL/ELT pipeline design, data lineage & warehousing, async task queues (Celery, Redis), PostgreSQL/MySQL/MongoDB, and feature engineering at scale.";
-        } else if (q.includes('skill') || q.includes('tech') || q.includes('capabilities') || q.includes('competenc') || q.includes('stack') || q.includes('ml ') || q.includes('machine learning') || q.includes('ai ')) {
-            response = "Abhigyan's technical capabilities are structured across 11 key domains: Programming & Software Engineering, Machine Learning & Computer Vision, Generative AI & Agentic Systems, RAG & Knowledge Systems, Backend & Full-Stack, Data Engineering & Storage, Systems Engineering & Security, MLOps & Observability, Distributed & Offline-First Systems, FinTech & Risk Analytics, and Geospatial Optimization. Check the Technical Capabilities section above for the full breakdown!";
-        } else if (q.includes('amazon')) {
-            response = "He ranked 278th nationwide in the Amazon ML Challenge 2025, achieving a scoring metric of 46.649.";
-        } else if (q.includes('meta') || q.includes('hackercup')) {
-            response = "Abhigyan is a Meta HackerCup'25 Round-2 Qualifier, demonstrating strong algorithmic problem-solving skills.";
-        } else if (q.includes('codeforces') || q.includes('rating') || q.includes('competitive') || q.includes(' cp')) {
-            response = "Abhigyan is a 'Specialist' on Codeforces with a max rating of 1436, and actively competes in programming contests. He also qualified for Meta HackerCup'25 Round-2 and ranked 278th nationwide in the Amazon ML Challenge 2025.";
-        } else if (q.includes('achievement') || q.includes('award') || q.includes('accomplish')) {
-            response = "Key achievements: AIR 7445 in JEE Advanced 2023; Codeforces Specialist (max rating 1436); Meta HackerCup'25 Round-2 Qualifier; 278th nationwide in Amazon ML Challenge 2025 (score 46.649); and NCC 'A' Certificate holder (A grade).";
-        } else if (q.includes('rank') || q.includes('jee')) {
-            response = "Abhigyan secured an All India Rank (AIR) of 7445 in the JEE Advanced 2023 examination, and is currently a B.Tech student in Data Science & AI at IIT Bhilai.";
-        } else if (q.includes('education') || q.includes('college') || q.includes('degree') || q.includes('cgpa') || q.includes('study') || q.includes('iit') || q.includes('school')) {
-            response = "Education: B.Tech in Data Science & AI at IIT Bhilai (expected May 2027, CGPA 8.00/10). Class XII from Sai RNS Academy (AISSCE, 91.2%) and Class X from Sainik School Goalpara (AISSE, 96.2%).";
-        } else if (q.includes('leadership') || q.includes('lead') || q.includes('e-cell') || q.includes('committee') || q.includes('organiz')) {
-            response = "Leadership: Core Member of the Entrepreneurship Cell at IIT Bhilai (organized TED-style talks & pitching events); Meraz 6.0 organizer handling logistics for 2000+ attendees; chaired IIT Bhilai MUN'24; Mess Coordinator; and placement cell support volunteer.";
-        } else if (q.includes('intern') || q.includes('available') || q.includes('hire') || q.includes('hiring') || q.includes('opportunit') || q.includes('job') || q.includes('recruit')) {
-            response = "Yes — Abhigyan is actively seeking data science internships, open-source collaborations, and AI/ML opportunities. Reach out via LinkedIn or email abhigyan.sharma6091@gmail.com to start a conversation.";
-        } else if (q.includes('contact') || q.includes('email') || q.includes('reach') || q.includes('linkedin') || q.includes('connect')) {
-            response = "You can reach Abhigyan at abhigyan.sharma6091@gmail.com, or connect via LinkedIn, GitHub (@Abhigyan6091), WhatsApp, or Instagram — all linked in the 'Establish Comm Link' section above.";
-        } else if (q.includes('resume') || q.includes('cv') || q.includes('download')) {
-            response = "Abhigyan's resume is available in the 'Download Resume' terminal near the bottom of the page — it contains all DS/AI technical competencies and project deployments. Just click the 'wget --secure Abhigyan_Sharma_Resume.pdf' button.";
-        } else if (q.includes('aeip') || q.includes('autonomous engineering') || q.includes('sre agent')) {
-            response = "The Autonomous Engineering Intelligence Platform (AEIP) is a full-lifecycle autonomous SRE agent platform for production software engineering and infrastructure management. Built with LangGraph, FastAPI, and Next.js, it features a dual-loop architecture (fast-loop triage & slow-loop deep investigation), multi-agent investigation teams, root cause analysis, and blast-radius analysis with human approvals.";
-        } else if (q.includes('toolforge') || q.includes('mcp') || q.includes('agent tool')) {
-            response = "ToolForge is a production-ready agent tool execution runtime and Model Context Protocol (MCP) server implementation. It features governed code execution, 26 standard tools across filesystem, system, and web APIs, hybrid RBAC and capability security, token-budgeted outputs, and sustains 533+ ops/sec with sub-millisecond p95 latency.";
-        } else if (q.includes('fraud') || q.includes('risk manager') || q.includes('merchant')) {
-            response = "The AI Risk Manager is a real-time merchant fraud prevention engine processing 500,000+ transactions with expected loss decisioning that dynamically balances fraud losses against false-positive customer insult costs. It integrates XGBoost, LightGBM, and Isolation Forest models with SHAP reasoning and an interactive Streamlit simulation.";
-        } else if (q.includes('trade') || q.includes('trading') || q.includes('backtest') || q.includes('quant')) {
-            response = "The Strategic Trade Analyzer is an algorithmic trading backtesting engine and risk gating pipeline with strict anti-lookahead guarantees, realistic transaction costs, and portfolio constraints. Features event-driven backtesting across technical strategies, ML trade validation via XGBoost probability scoring, Monte Carlo stress testing, and a 609-test test suite.";
-        } else if (q.includes('pond') || q.includes('village pond') || q.includes('gis') || q.includes('hydro')) {
-            response = "The Village Pond Planning System is an automated geospatial and hydrological planning platform to optimize village pond site selection and catchment management. It combines DEM terrain analysis, multi-criteria land suitability modeling, Open-Meteo runoff calculations, and interactive 3D visualizations for sustainable rural water conservation.";
-        } else if (q.includes('winguard') || q.includes('process isolation') || q.includes('isolation') || q.includes('job objects')) {
-            response = "The WinGuard Framework is a zero-dependency C security framework leveraging native Win32 APIs (Job Objects, Restricted Security Tokens, IO Completion Ports) to implement an adaptive 3-tier containment system for untrusted Windows processes with a 25ms telemetry feedback loop, memory limiting, and real-time CPU throttling.";
-        } else if (q.includes('peerscribe') || q.includes('mesh') || q.includes('p2p') || q.includes('clinical') || q.includes('triage')) {
-            response = "PeerScribe is an offline-first, peer-to-peer clinical documentation and disaster response mesh network. Built with Node.js, SQLite WAL mode, and CRDT vector clocks for conflict-free multi-medic synchronization, it features START disaster triage, voice memo queues, and a Delay-Tolerant Networking (DTN) epidemic protocol designed for zero-connectivity field operations.";
-        } else if (q.includes('sentinel') || q.includes('aegis') || q.includes('red-teaming') || q.includes('red team') || q.includes('jailbreak')) {
+        // =========================================================================
+        // 1. SPECIFIC PROJECTS (Prioritized to avoid generic keyword collisions)
+        // =========================================================================
+
+        if (q.includes('sentinel') || q.includes('aegis') || q.includes('red team') || q.includes('red-team') || q.includes('jailbreak') || q.includes('prompt injection') || q.includes('context firewall') || q.includes('ai app security') || q.includes('ai security')) {
             response = "Sentinel Aegis is a local, portfolio-grade AI application security and red-teaming platform. It demonstrates practical controls for prompt injection detection, jailbreaks, PII redaction, context firewalls for RAG retrieval, policy-based tool authorization, adversarial attack campaigns, and automated CI security gates.";
-        } else if (q.includes('thz') || q.includes('terahertz') || q.includes('ap deployment') || q.includes('milp') || q.includes('human mobility')) {
+
+        } else if (q.includes('aeip') || q.includes('autonomous engineering') || q.includes('sre agent') || q.includes('sre platform') || q.includes('root cause analysis') || q.includes('blast-radius') || q.includes('fast-loop')) {
+            response = "The Autonomous Engineering Intelligence Platform (AEIP) is a full-lifecycle autonomous SRE agent platform for production software engineering and infrastructure management. Built with LangGraph, FastAPI, and Next.js, it features dual-loop architecture (fast-loop triage & slow-loop deep investigation), multi-agent investigation teams, root cause analysis, automated remediation plans with blast-radius analysis, and human approvals.";
+
+        } else if (q.includes('toolforge') || q.includes('mcp') || q.includes('model context protocol') || q.includes('agent tool') || q.includes('governed code') || q.includes('tool execution')) {
+            response = "ToolForge is a production-ready agent tool execution runtime and Model Context Protocol (MCP) server implementation. It features governed code execution, 26 standard tools across filesystem, system, and web APIs, hybrid capability-based security and RBAC, token-budgeted outputs, SQLite audit logging, and sustained throughput of 533+ ops/sec with sub-millisecond p95 latency.";
+
+        } else if (q.includes('winguard') || q.includes('job object') || q.includes('restricted token') || q.includes('process isolation') || q.includes('cpu throttling') || q.includes('telemetry loop')) {
+            response = "The WinGuard Framework is a zero-dependency C security framework leveraging native Win32 APIs (Job Objects, Restricted Security Tokens, IO Completion Ports) to implement an adaptive 3-tier containment system for untrusted Windows processes with a 25ms telemetry feedback loop, dynamic privilege stripping, memory limiting, and real-time CPU throttling.";
+
+        } else if (q.includes('peerscribe') || q.includes('clinical') || (q.includes('p2p') && !q.includes('pix2pix')) || q.includes('mesh network') || q.includes('delay-tolerant') || q.includes('dtn') || q.includes('vector clock')) {
+            response = "PeerScribe is an offline-first, peer-to-peer clinical documentation and disaster response mesh network. Built with Node.js, SQLite WAL mode, and CRDT vector clocks for conflict-free multi-medic synchronization, it features START disaster triage, voice memo queues, and a Delay-Tolerant Networking (DTN) epidemic protocol designed for zero-connectivity field operations.";
+
+        } else if (q.includes('risk manager') || q.includes('fraud') || q.includes('merchant') || q.includes('expected loss') || q.includes('insult cost') || q.includes('cost-sensitive')) {
+            response = "The AI Risk Manager is a real-time merchant fraud prevention engine processing 500,000+ transactions with expected loss decisioning that dynamically balances fraud losses against false-positive customer insult costs. It integrates XGBoost, LightGBM, and Isolation Forest models with SHAP reasoning and an interactive Streamlit simulation.";
+
+        } else if (q.includes('strategic trade') || q.includes('trade analyzer') || q.includes('trading') || q.includes('backtest') || q.includes('lookahead') || q.includes('look-ahead') || q.includes('monte carlo') || q.includes('quant')) {
+            response = "The Strategic Trade Analyzer is an algorithmic trading backtesting engine and risk gating pipeline with strict anti-lookahead guarantees, realistic transaction costs, and portfolio constraints. Features event-driven backtesting across technical strategies, ML trade validation via XGBoost probability scoring, Monte Carlo stress testing, and a comprehensive 609-test test suite.";
+
+        } else if (q.includes('thz') || q.includes('terahertz') || q.includes('ap deployment') || q.includes('human mobility') || q.includes('pulp') || q.includes('highs') || q.includes('beamwidth') || q.includes('molecular absorption')) {
             response = "The Volumetric THz AP Deployment project is an optimization engine and 3D propagation physics simulator for deploying directional Terahertz Access Points in indoor spaces. Powered by Mixed-Integer Linear Programming (MILP via PuLP and HiGHS), it models molecular absorption, hardware beamwidth trade-offs, and dynamic human blockage resilience using real-world pedestrian trajectory data.";
-        } else if (q.includes('project') || q.includes('work') || q.includes('portfolio') || q.includes('built') || q.includes('repo')) {
-            response = "Abhigyan's portfolio features 18 databanks in an interactive 3D circular carousel, including Sentinel Aegis (AI App Security & Red-Teaming), Volumetric THz AP Deployment, Autonomous Engineering Intelligence Platform (AEIP), ToolForge (MCP), AI Risk Manager, Strategic Trade Analyzer, Village Pond Planning, WinGuard, PeerScribe, ShikshaSarthi, AutoGrader, Multi-Scale Pix2Pix GAN, Deepfake Detection, and more. Drag horizontally or use the arrows on the carousel above to inspect any of them!";
-        } else if (q.includes('hello') || q.includes('hi ') || q === 'hi' || q.includes('hey') || q.includes('greet')) {
-            response = "Agent_Sharma_Core online. Systems synchronized. I can recount Abhigyan's projects, technical skills, achievements, education, or contact details. Pick a suggestion chip below or type your query.";
-        } else if (q.includes('who') || q.includes('about') || q.includes('abhigyan') || q.includes('himself')) {
-            response = "Abhigyan Sharma is an AI & Data Science undergraduate at IIT Bhilai, specializing in Generative AI, multi-agent LLM systems, computer vision, and data engineering. He bridges cutting-edge deep learning research with production-ready system architecture. Ask me about his projects, skills, or achievements!";
+
+        } else if (q.includes('village pond') || (q.includes('pond') && !q.includes('poetry')) || q.includes('hydrological') || q.includes('runoff') || q.includes('catchment') || (q.includes('dem') && !q.includes('demo'))) {
+            response = "The Village Pond Planning System is an automated geospatial and hydrological planning platform to optimize village pond site selection and catchment management. It combines DEM terrain analysis, multi-criteria land suitability modeling, Open-Meteo runoff calculations, and interactive 3D visualizations to promote sustainable rural water conservation.";
+
+        } else if (q.includes('shiksha') || q.includes('siksha') || q.includes('sarthi') || q.includes('edtech') || q.includes('school') || q.includes('classroom')) {
+            response = "ShikshaSarthi is a full-stack, offline-first school learning platform built for classrooms with unreliable internet. Each school runs the entire app (React frontend, Node/Express API, MongoDB) on a local Docker server, while a small AWS cloud service handles versioned updates, checksum-verified installs, backups, and bidirectional data sync. It features role-based access, adaptive testing, quiz analytics, and Gemini AI hints.";
+
+        } else if (q.includes('autograder') || q.includes('grading') || q.includes('grader') || q.includes('code grading')) {
+            response = "AutoGrader is an end-to-end GenAI code-grading platform for CS education. It uses Docker-sandboxed multi-language execution (Python, C, Java), a Django/DRF + Celery/Redis backend for concurrent grading at scale, and a local LLM feedback pipeline (Ollama: Llama 3 / Mistral) that delivers rubric-aligned pedagogical feedback — achieving 85% evaluation accuracy on open-ended answers.";
+
+        } else if (q.includes('deepfake') || q.includes('forgery') || q.includes('spatial-temporal') || (q.includes('vit') && q.includes('lstm'))) {
+            response = "His Spatial-Temporal-Frequency Deepfake Detection model is a video detector fusing three branches: Facial Component Guidance attention on ViT-L/14 spatial features, a Bi-LSTM over per-frame CLS token sequences for temporal cues, and block-DCT spectral analysis for compression artifacts. Optimized with gradient checkpointing and layer pruning to train under constrained (6GB) GPU VRAM.";
+
+        } else if (q.includes('pix2pix') || q.includes('patchgan') || (q.includes('gan') && !q.includes('agent'))) {
+            response = "Abhigyan architected a Structure-Aware Multi-Scale Pix2Pix GAN in PyTorch. It uses U-Net generators and PatchGAN discriminators with multi-scale feature extraction plus perceptual and edge-consistency losses, trained on 12k image pairs to improve SSIM by 0.08 over the standard baseline.";
+
+        } else if ((q.includes('sql') && q.includes('agent')) || q.includes('nl-to-sql') || q.includes('nl2sql') || q.includes('natural language to sql')) {
+            response = "The Intelligent SQL Agent is an LLM-powered system (OpenAI/Mistral) that converts plain English into safe, schema-aware SQL queries — automatically identifying relevant tables, executing queries securely against a live database, and returning structured results via LLM-driven reasoning chains.";
+
+        } else if (q.includes('b+ tree') || q.includes('b+tree') || q.includes('b-tree') || q.includes('dbms index') || q.includes('page management') || (q.includes('tree') && q.includes('disk'))) {
+            response = "The Disk-Based B+ Tree Index is a persistent database index engine built from scratch in C++ using memory-mapped I/O. It delivers O(log n) lookups with automatic node splitting and 4096-byte page management, scaling to datasets larger than available RAM.";
+
+        } else if (q.includes('poetry') || q.includes('verse') || q.includes('reciprocal')) {
+            response = "The Reciprocal Contextual Poetry Generation model fuses contextual embeddings, sequence layers, and attention blocks with reinforcement learning from human feedback. It builds a reciprocal context-learning flow where each generated verse conditions the next for semantic coherence, trained on 5,000+ texts to model human-AI creative collaboration.";
+
+        } else if (q.includes('hmm') || q.includes('hidden markov') || q.includes('penalized likelihood') || (q.includes('markov') && q.includes('synthetic'))) {
+            response = "The HMM project validates an advanced model-order selection algorithm against synthetic sequence data, automatically computing the optimal number of hidden states via dynamic penalized likelihood scoring to recover underlying structural data dynamics.";
+
+        } else if (q.includes('eadip') || (q.includes('enterprise') && q.includes('data')) || (q.includes('multi-agent') && q.includes('platform')) || (q.includes('langgraph') && q.includes('data'))) {
+            response = "The Enterprise AI Data Intelligence Platform is a production-grade, local-first multi-agent system built on LangGraph. It lets data/ML engineers conversationally investigate ETL pipelines, Airflow DAGs, data lineage, and SQL warehouses — featuring dynamic fan-out routing, Self-RAG hallucination validation, hybrid dense+BM25 retrieval with cross-encoder reranking, and a Next.js observability UI.";
+
+        // =========================================================================
+        // 2. TECHNICAL CAPABILITIES (11 Specific Domains)
+        // =========================================================================
+
+        } else if (q.includes('agentic') || (q.includes('agent') && !q.includes('sql') && !q.includes('sre')) || q.includes('langgraph') || q.includes('tool calling') || q.includes('pydantic') || q.includes('human-in-the-loop') || q.includes('token budget')) {
+            response = "Abhigyan's Generative AI & Agentic Systems competency covers LLM Fine-Tuning (LoRA & PEFT), LangChain & LangGraph multi-agent coordination, Hugging Face Transformers, Ollama & local deployment, Model Context Protocol (MCP), structured outputs via Pydantic & JSON Schema, prompt evaluation, token budgets, and human-in-the-loop governance (demonstrated in AEIP & ToolForge).";
+
+        } else if (q.includes('rag') || q.includes('retrieval') || q.includes('qdrant') || q.includes('faiss') || q.includes('pinecone') || q.includes('llamaindex') || q.includes('vector search') || q.includes('rerank')) {
+            response = "In RAG, Search & Knowledge Systems, Abhigyan architects hybrid dense + BM25 retrieval pipelines, vector search engines (Qdrant, FAISS, Pinecone), cross-encoder reranking, retrieval-grounded response validation, evidence provenance, and schema-aware NL-to-SQL generation.";
+
+        } else if (q.includes('systems security') || (q.includes('systems') && q.includes('engineer')) || q.includes('process isolation') || q.includes('sandboxing') || q.includes('job objects') || q.includes('restricted tokens') || q.includes('least privilege') || q.includes('win32')) {
+            response = "In Systems Engineering, Security & Reliability, Abhigyan specializes in native C/Win32 systems programming, Windows Job Objects, restricted token sandboxing, 25ms telemetry monitoring loops, capability-based least privilege, async concurrency, exponential backoff retries, and fault recovery (proven in WinGuard and ToolForge).";
+
+        } else if (q.includes('computer vision') || q.includes('vision') || q.includes('vit') || q.includes('clip') || q.includes('cnn') || q.includes('deep learning') || q.includes('image processing')) {
+            response = "In Machine Learning & Computer Vision, Abhigyan designs CNNs, Vision Transformers (ViT-L/14), CLIP cross-modal attention, GANs (Multi-Scale Pix2Pix), LSTMs/Bi-LSTMs, gradient-checkpointed memory optimization, and explainable AI with SHAP.";
+
+        } else if (q.includes('backend') || q.includes('full-stack') || q.includes('full stack') || q.includes('fastapi') || q.includes('django') || q.includes('flask') || q.includes('react') || q.includes('next.js') || q.includes('rest api')) {
+            response = "His backend & full-stack engineering toolkit includes FastAPI, Flask, Django/DRF, Node.js & Express, React, Next.js, Server-Sent Events (SSE), JWT authentication, RBAC, Celery & Redis task queues, PostgreSQL, MongoDB, and offline-first web architecture.";
+
+        } else if (q.includes('data engineering') || q.includes('spark') || q.includes('kafka') || q.includes('airflow') || q.includes('etl') || q.includes('pipeline') || q.includes('data lineage') || q.includes('wal')) {
+            response = "His data engineering toolkit spans Apache Spark, Kafka, Airflow, ETL/ELT pipeline design, data lineage & warehousing, async task queues (Celery, Redis), SQLite Write-Ahead Logging (WAL), DBMS indexing (B+ Trees), and memory-mapped I/O.";
+
+        } else if (q.includes('distributed') || q.includes('offline-first') || q.includes('offline first') || q.includes('local-first') || q.includes('crdt') || q.includes('vector clock') || q.includes('p2p') || q.includes('mesh') || q.includes('nostr') || q.includes('dtn')) {
+            response = "In Distributed & Offline-First Systems, Abhigyan builds resilient architectures with CRDTs, vector clocks, bidirectional synchronization, peer-to-peer replication (BLE, Wi-Fi Direct), Delay-Tolerant Networking (DTN), and Nostr relay-based propagation.";
+
+        } else if (q.includes('mlops') || q.includes('docker') || q.includes('kubernetes') || q.includes('k8s') || q.includes('github actions') || q.includes('ci/cd') || q.includes('mlflow') || q.includes('prometheus') || q.includes('grafana') || q.includes('cloud')) {
+            response = "In MLOps, Cloud & Observability, he works with Docker & Docker Compose, GitHub Actions CI/CD, AWS deployments & sync, ML model serving, MLflow experiment tracking, Prometheus & Grafana telemetry, structured logging, and Kubernetes fundamentals.";
+
+        } else if (q.includes('fintech') || q.includes('fraud detection') || q.includes('risk analytics') || q.includes('expected-loss')) {
+            response = "In FinTech, Fraud & Risk Analytics, Abhigyan develops transaction fraud detection, anomaly detection, cost-sensitive classification, expected-loss decisioning, look-ahead bias prevention, and Monte Carlo stress testing pipelines (modeling and simulation).";
+
+        } else if (q.includes('geospatial') || q.includes('gis') || q.includes('optimization') || q.includes('milp') || q.includes('linear programming') || q.includes('hydrology') || q.includes('terrain')) {
+            response = "In Geospatial & Mathematical Optimization, he works with DEM processing, terrain/slope/aspect analysis, watershed & hydrological runoff modeling, GeoJSON/KML, Delaunay triangulation, and Mixed-Integer Linear Programming (MILP via PuLP and HiGHS).";
+
+        } else if (q.includes('programming') || q.includes('languages') || q.includes('c++') || q.includes('python') || q.includes('java') || q.includes('typescript') || q.includes('javascript') || q.includes('dsa') || q.includes('oop')) {
+            response = "Abhigyan is proficient in Python, C++, C, Java, JavaScript, TypeScript, and SQL, with deep foundations in Data Structures & Algorithms, Object-Oriented Programming, Git, Linux, and Bash scripting.";
+
+        } else if (q.includes('skill') || q.includes('tech') || q.includes('capabilities') || q.includes('stack') || q.includes('competenc') || q.includes('ai ') || q.includes('ml ')) {
+            response = "Abhigyan's technical capabilities are structured across 11 key domains: 1. Programming & CS, 2. Machine Learning & CV, 3. Generative AI & Agentic Systems, 4. RAG & Knowledge Systems, 5. Backend & Full-Stack, 6. Data Engineering, 7. Systems Engineering & Security, 8. MLOps & Observability, 9. Distributed & Offline-First, 10. FinTech & Risk, and 11. Geospatial & Mathematical Optimization. Check the Technical Capabilities section above for the full breakdown!";
+
+        // =========================================================================
+        // 3. PROFILE, CREDENTIALS, RESUME & ACHIEVEMENTS
+        // =========================================================================
+
+        } else if (q.includes('resume') || q.includes('cv') || q.includes('download')) {
+            response = "Abhigyan's verified resume is ready for download: <a href='https://drive.google.com/file/d/1G8MT8imqC3nZCGMup5xGNaiIwzagdiip/view?usp=drive_link' target='_blank' style='color:var(--accent-primary);text-decoration:underline;font-weight:bold;'>[Download Resume (PDF)]</a>. You can also trigger the secure terminal download button ('wget --secure Abhigyan_Sharma_Resume.pdf') in the Comm Link section below.";
+
+        } else if (q.includes('who') || q.includes('about') || q.includes('abhigyan') || q.includes('himself') || q.includes('profile') || q.includes('bio')) {
+            response = "Abhigyan Sharma is an Agentic AI and ML Enthusiast and Data Science & AI undergraduate at IIT Bhilai (CGPA 8.00/10, class of 2027). He specializes in multi-agent LLM systems (LangGraph, MCP), computer vision (ViT, CLIP, GANs), systems security & process isolation (Win32), and resilient data engineering pipelines. He has built 18 production-grade databanks ranging from autonomous SREs to P2P disaster mesh networks.";
+
+        } else if (q.includes('amazon') || q.includes('codeforces') || q.includes('hackercup') || q.includes('rating') || q.includes('specialist') || q.includes('achievement') || q.includes('award') || q.includes('accomplish') || q.includes('contest') || q.includes('competitive') || q.includes(' cp')) {
+            response = "Key achievements: All India Rank 7445 in JEE Advanced 2023; Specialist on Codeforces (Max Rating: 1436); Meta HackerCup'25 Round-2 Qualifier; Ranked 278th nationwide in Amazon ML Challenge 2025 (Score: 46.649); and NCC 'A' Certificate holder (A grade).";
+
+        } else if (q.includes('rank') || q.includes('jee')) {
+            response = "Abhigyan secured an All India Rank (AIR) of 7445 in the JEE Advanced 2023 examination, and is currently pursuing B.Tech in Data Science & AI at IIT Bhilai.";
+
+        } else if (q.includes('education') || q.includes('college') || q.includes('degree') || q.includes('cgpa') || q.includes('study') || q.includes('iit') || q.includes('school')) {
+            response = "Education: B.Tech in Data Science & Artificial Intelligence at IIT Bhilai (expected May 2027, CGPA 8.00/10). Completed Class XII from Sai RNS Academy (AISSCE, 91.2%) and Class X from Sainik School Goalpara (AISSE, 96.2%).";
+
+        } else if (q.includes('leadership') || q.includes('lead') || q.includes('e-cell') || q.includes('committee') || q.includes('organiz') || q.includes('meraz') || q.includes('mun')) {
+            response = "Leadership & Activities: Core Member of the Entrepreneurship Cell at IIT Bhilai (organized TED-style talks & pitching events); Logistics Organizer for Meraz 6.0 (2000+ attendees); Chair of IIT Bhilai MUN'24; Mess Coordinator; and placement cell support volunteer.";
+
+        } else if (q.includes('intern') || q.includes('available') || q.includes('hire') || q.includes('hiring') || q.includes('opportunit') || q.includes('job') || q.includes('recruit') || q.includes('contact') || q.includes('email') || q.includes('reach') || q.includes('linkedin') || q.includes('connect')) {
+            response = "Abhigyan is actively exploring AI/ML opportunities, data science internships, and systems engineering collaborations. Connect via email at <a href='mailto:abhigyan.sharma6091@gmail.com' style='color:var(--accent-primary);text-decoration:underline;'>abhigyan.sharma6091@gmail.com</a>, LinkedIn (<a href='https://www.linkedin.com/in/abhigyan-sharma-6091' target='_blank' style='color:var(--accent-primary);text-decoration:underline;'>in/abhigyan-sharma-6091</a>), or inspect his code on GitHub (<a href='https://github.com/Abhigyan6091' target='_blank' style='color:var(--accent-primary);text-decoration:underline;'>@Abhigyan6091</a>).";
+
+        } else if (q.includes('game') || q.includes('dots') || q.includes('boxes') || q.includes('minimax') || q.includes('alpha-beta') || q.includes('alpha beta')) {
+            response = "Challenge Abhigyan's Minimax AI with Alpha-Beta Pruning in the Dots & Boxes section on this page! It computes optimal moves across custom grid dimensions and preset configurations.";
+
+        } else if (q.includes('project') || q.includes('work') || q.includes('portfolio') || q.includes('databank') || q.includes('carousel') || q.includes('built') || q.includes('repo')) {
+            response = "Abhigyan's portfolio features 18 databanks in an interactive 3D circular carousel above, including Sentinel Aegis (AI App Security), Volumetric THz AP Deployment, Autonomous Engineering Intelligence Platform (AEIP), ToolForge (MCP), AI Risk Manager, Strategic Trade Analyzer, Village Pond Planning, WinGuard, PeerScribe, ShikshaSarthi, AutoGrader, Pix2Pix GAN, Deepfake Detection, and more. Drag horizontally or use the arrows on the carousel to inspect them!";
+
+        } else if (q.includes('hello') || q.includes('hi ') || q === 'hi' || q.includes('hey') || q.includes('greet') || q.includes('help') || q.includes('commands') || q.includes('menu')) {
+            response = "Agent_Sharma_Core ready. You can query me on: 1. Specific projects ('AEIP', 'ToolForge', 'Sentinel Aegis', 'WinGuard'), 2. Technical capabilities ('Agentic AI', 'RAG', 'Systems Security'), 3. Achievements ('Codeforces', 'Amazon ML Challenge', 'JEE'), 4. Credentials ('Education', 'Resume', 'Contact').";
+
+        } else {
+            response = "Query parameters outside direct index. You can ask about:\n• 18 Project Databanks (e.g. 'AEIP', 'ToolForge', 'Sentinel Aegis', 'WinGuard', 'PeerScribe')\n• 11 Capability Domains (e.g. 'Agentic AI', 'Computer Vision', 'Systems Security', 'RAG')\n• Academic & Contest Credentials ('Education', 'JEE Rank', 'Codeforces', 'Amazon ML Challenge')\n• Direct Links ('Resume', 'GitHub', 'Contact')";
         }
 
         setTimeout(() => {
@@ -601,8 +667,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 appendMessage('bot', response, true);
                 statusText.textContent = oldStatus;
                 statusText.style.color = "";
-            }, 600);
-        }, 800);
+            }, 350);
+        }, 400);
     }
 
     chatSend.addEventListener('click', () => {
